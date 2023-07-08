@@ -1,0 +1,26 @@
+.wrap{
+    height: 100vh;
+    width: 100%;
+}
+.wrap__96{
+    margin: auto;
+    background-color: cornflowerblue;
+    width: 96%;
+    height: 100%;
+}
+.module{
+    display: flex;
+}
+.module > button{
+    background-color: aquamarine;
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+    justify-content: center;
+    align-items: center;
+}
+.inner__form{
+    background-color: rgba(26, 142, 103, 0.604);
+    width: 100%;
+    height: 100vh;
+}
