@@ -7,10 +7,6 @@
     justify-content: center;
     cursor: default;
 }
-::selection{
-    background-color: none;
-    color: #b8b8b8;
-}
 .wrap h2{
     font-weight: bold;
     font-size: larger;
@@ -31,7 +27,7 @@
     gap: 50px;
     color: #fff;
 }
-.left,.center,.right{
+.column{
     max-width: 350px;
     height: max-content;
     display: flex;
@@ -39,7 +35,7 @@
     gap: 15px;
     color: #fff;
 }
-.left{
+.column:nth-child(-n+1){
     align-items: center;
     gap: 10px;
 }
@@ -49,7 +45,7 @@
     background-color: #fff;
     cursor: pointer;
 }
-.right p:hover{
+.column:nth-last-child(-n+2) p:hover{
     cursor: pointer;
     color: #b8b8b8;
     text-decoration:underline dotted;

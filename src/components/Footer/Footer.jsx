@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <div className={s.wrap}>
             <div className={s.inner}>
-                <div className={s.left}>
+                <div className={s.column}>
                     <div className={s.logo}><a href="#"></a></div>
                     <p>© 2023 ADS Constructor</p>
                     <p>email@gmail.com</p>
@@ -29,20 +29,18 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className={s.center}>
+                <div className={s.column}>
                     <h2>ADS Constructor -</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa
                         nemo molestiae, corrupti nam velit sit tempore dolor illum minima saepe corporis
                         cupiditate, mollitia alias cumque libero a soluta similique architecto.</p>
                 </div>
-                <div className={s.right}>
+                <div className={s.column}>
                     <h3>Популярные ссылки</h3>
                     <p>Главная</p>
                     <p>О нас</p>
-                    <p>text</p>
-                    <p>text</p>
                 </div>
-                <div className={s.right}>
+                <div className={s.column}>
                     <h3>Важная информация</h3>
                     <p>Политика конфидециальности</p>
                     <p>Условия использования</p>
