@@ -1,19 +1,22 @@
 import React from "react";
 import Header from "../Header/Header";
-import FrontPage from "../FrontPage/FrontPage";
+import FrontPage from "../Pages/FrontPage/FrontPage";
 import Footer from "../Footer/Footer";
-import User from "../User/User";
-import Instructions from "../Instructions/Instructions";
+import Instructions from "../Pages/Instructions/Instructions";
+import { Route, Routes } from "react-router-dom";
+import Profile from "../Pages/Profile/Profile";
 
 const App = ()=>{
     return(
-        <div>
+        <>
             <Header />
-            <FrontPage />
-            <Instructions />
+            <Routes>
+                <Route path="/" element={<FrontPage />} />
+                <Route path="/instruction" element={<Instructions />} />
+                <Route path="/profile" element={<Profile />} />
+            </Routes>
             <Footer />
-            <User />
-        </div>
+        </>
     )
 }
 export default App;

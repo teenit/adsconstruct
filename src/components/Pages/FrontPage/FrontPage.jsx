@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import s from "./frontPage.module.css";
-import ProfileNavModule from "./ProfileNavModule";
-import Profile from './Pages/Profile/Profile'
+import { NavLink } from "react-router-dom";
 
 const FrontPage = ()=>{
 
@@ -10,8 +9,9 @@ const FrontPage = ()=>{
     })
 
     return(
-<<<<<<< HEAD
         <div className={s.wrap}>
+            <NavLink to={'instruction'}>instruction</NavLink>
+            <NavLink to={'profile'}>profile</NavLink>
             <div className={s.module}>
                    <div className={s.blocks1}>
                    <div className={s.block}></div>
@@ -85,20 +85,12 @@ const FrontPage = ()=>{
                    </div>
                 
             </div>
-          
-            {state.modal ?<ProfileNavModule close = {()=>setState({...state,modal:false})} />:null} 
+            
         </div>
-=======
-        <Profile />
-        // <div className={s.wrap}>
-        //     <div className={s.wrap__96}>
-        //         <div className={s.module}>
-        //             <button onClick={()=>setState({...state,modal:true})}>Открыть окно</button>
-        //         </div>
-        //     </div>
-        //     {state.modal ?<ProfileNavModule close = {()=>setState({...state,modal:false})} />:null} 
-        // </div>
->>>>>>> profile-page
+
+       
+    
+
     )
 }
 export default FrontPage;

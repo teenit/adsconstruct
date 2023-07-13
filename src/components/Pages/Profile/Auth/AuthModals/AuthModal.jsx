@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import s from '../Auth.module.css'
 import ForgetPass from './ForgetPass'
 import NewPass from './NewPass'
-import cross from '../../../../../../img/cross.png'
+import cross from './../../../../../img/cross.png'
 import PassChanged from './PassChanged'
 const AuthModal = ({ setModal }) => {
   const [change, setChange] = useState({
