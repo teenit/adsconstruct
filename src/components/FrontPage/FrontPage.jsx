@@ -10,10 +10,7 @@ const FrontPage = ()=>{
 
     return(
         <div className={s.wrap}>
-            <div className={s.wrap__96}>
-                <div className={s.module}>
-                    <button onClick={()=>setState({...state,modal:true})}>Открыть окно</button>
-                </div>
+            <div className={s.wrap__100}>
             </div>
             {state.modal ?<ProfileNavModule close = {()=>setState({...state,modal:false})} />:null} 
         </div>

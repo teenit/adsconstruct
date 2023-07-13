@@ -1,0 +1,33 @@
+.wrap{
+    background-color:  #0D0D11;
+    width: 100%;
+    height: 100vh;
+    border-bottom: solid 2px rgb(255, 255, 255);
+    color: white;
+
+}
+.wrap__80{
+    width: 80%;
+    height: 100%;
+    margin: auto;
+}
+.header{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.header >img{
+    width: 50px;
+    height: 50px;
+}
+.header >h3{
+    margin-left: 8px;
+}
+.wrap__mid >h1{
+    font-size: 60px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.wrap__info >p{
+    margin-top: 10px;
+}
