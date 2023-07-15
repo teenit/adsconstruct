@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import s from "./frontPage.module.css";
 import { NavLink } from "react-router-dom";
+import SectionOne from "../../Sections/SectionOne/SectionOne";
+import SectionTwo from "../../Sections/SectionTwo/SectionTwo";
+import SectionThree from "../../Sections/SectionThree/SectionThree";
+import SectionFour from "../../Sections/SectionFour/SectionFour";
+import SectionFive from "../../Sections/SectionFive/SectionFive";
+import SectionSix from "../../Sections/SectionSix/SectionSix";
+import SectionSeven from "../../Sections/SectionSeven/SectionSeven";
+import SectionEight from "../../Sections/SectionEight/SectionEight";
 
 const FrontPage = ()=>{
 
@@ -12,79 +20,16 @@ const FrontPage = ()=>{
         <div className={s.wrap}>
             <NavLink to={'instruction'}>instruction</NavLink>
             <NavLink to={'profile'}>profile</NavLink>
-            <div className={s.module}>
-                   <div className={s.blocks1}>
-                   <div className={s.block}></div>
-                   </div>
-                   </div>
-                   <div className={s.module}>
-                   <div className={s.blocks2}></div>
-                   <div className={s.block}>  </div>
-                   <div className={s.block}></div>
-                 
-                   </div>
-                   <div className={s.module}>
-                   <div className={s.blocks3}></div>
-                   <div className={s.block}>  </div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
+            <SectionOne/>
+            <SectionTwo/>
+            <SectionThree/>
+            <SectionFour/>
+            <SectionFive/>     
+            <SectionSix/>    
+            <SectionSeven/>
+            <SectionEight/>
 
-                   </div>
 
-                   <div className={s.module}>
-                   <div className={s.blocks4}>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   
-                   </div>
-            </div>
-                   
-                   <div className={s.module}>
-                   <div className={s.blocks5}></div>
-                   <div className={s.block}>  </div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                 
-                   </div>
-                   <div className={s.module}>
-                   <div className={s.blocks6}></div>
-                   <div className={s.block}>  </div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                 
-                   </div>
-                   <div className={s.module}>
-                   <div className={s.blocks7}></div>
-                   <div className={s.block}>  </div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                 
-                   </div>
-
-                <div className={s.module}>
-                   <div className={s.blocks8}>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   <div className={s.block}></div>
-                   </div>
-                
-            </div>
             
         </div>
 
