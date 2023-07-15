@@ -11,6 +11,7 @@ const FrontPage = ()=>{
     return(
         <div className={s.wrap}>
             <NavLink to={'instruction'}>instruction</NavLink>
+            <NavLink to={'police'}>police</NavLink>
             <NavLink to={'profile'}>profile</NavLink>
             <div className={s.module}>
                    <div className={s.blocks1}>
