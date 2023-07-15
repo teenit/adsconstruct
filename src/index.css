@@ -11,3 +11,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+:root{
+  --main-color:#1565c0;
+  --main-color-hover:rgb(139, 139, 214);
+  --dark-gray-color:#222;
+  --light-gray-color:#b2b2b2
+}
+:hover{
+  transition: all .3s;
+}
+::selection{
+  background-color: none;
+  color: var(--light-gray-color);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+Button{
+  background-color: var(--main-color) !important;
+}
+Button:hover{
+  background-color: var(--main-color-hover) !important;
+}
+.modal__wrap{
+  width: 100%;
+  height: 100vh;
+  background-color: #00000077;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.modal__inner{
+  border-radius: 15px;
+  background-color: #fff;
+}

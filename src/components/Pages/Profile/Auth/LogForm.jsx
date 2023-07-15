@@ -17,7 +17,6 @@ const [modal,setModal] = useState(false)
 return (
     <div className={s.form__inner}>
         <div className={s.options}>
-            <h3>Аккаунт</h3>
             <div className={s.options__row}>
                 <div className={s.option}>
                     <label htmlFor={change.nickname == true ? "nickname" : "email"}><p><span className={change.nickname == true ? `${s.clicked} ${s.bold}`: null} onClick={() => {
