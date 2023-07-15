@@ -62,7 +62,7 @@ const Header = () => {
                         <p onMouseEnter={() => {
                             setProfileModal(true)
                         }}>Профиль</p>
-                        {modal == true ? <ProfileModal setModal={setProfileModal} /> : null}
+                        {profileModal == true ? <ProfileModal setModal={setProfileModal} /> : null}
                         <div className={s.line}></div>
                         <p>Инструкция</p>
 
