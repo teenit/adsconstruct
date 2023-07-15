@@ -17,7 +17,6 @@ const RegForm = () => {
             hasError: false
         },
         date: '',
-        sex: '',
         city: '',
         bio: {
             val: '',
@@ -29,7 +28,6 @@ const RegForm = () => {
         email: regData.email.val,
         password: regData.password.val,
         date: regData.date,
-        sex: regData.sex,
         city: regData.city,
         bio: regData.bio.val,
     }
@@ -104,16 +102,6 @@ const RegForm = () => {
                         <TextField type='date' id='date' variant="outlined" onChange={(e) => {
                             setRegData({ ...regData, date: e.target.value })
                         }} />
-                    </div>
-                    <div className={s.option}>
-                        <label htmlFor='sex'><p>Пол</p></label>
-                        <Select onChange={(e) => {
-                            setRegData({ ...regData, sex: e.target.value })
-                        }}>
-                            <MenuItem value="Мужской">Мужской</MenuItem>
-                            <MenuItem value="Женский">Женский</MenuItem>
-                            <MenuItem value="Другой">Другой</MenuItem>
-                        </Select>
                     </div>
                     <div className={s.option}>
                         <label htmlFor='city'><p>Город</p></label>
