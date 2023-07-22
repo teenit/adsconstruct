@@ -10,18 +10,27 @@ import SectionSix from "../../Sections/SectionSix/SectionSix";
 import SectionSeven from "../../Sections/SectionSeven/SectionSeven";
 import SectionEight from "../../Sections/SectionEight/SectionEight";
 import PortalModalRoot from "../../Portals/PortalModalRoot";
+import { useDispatch, useSelector } from "react-redux";
+import { addBalans, minusBalans } from "../../../store/Slices/balansSlice";
 
 const FrontPage = ()=>{
-
+    const {tvmpCoin} = useSelector(state => state.tvmpCoin);
+    console.log(tvmpCoin)
     const [state, setState] = useState({
         activeModal:true,
     })
+    const dispatch = useDispatch()
+    function test(){
 
+        dispatch(minusBalans(5))
+        console.log(tvmpCoin)
+    }
     return(
         <div className={s.wrap}>
             <NavLink to={'instruction'}>instruction</NavLink>
             <NavLink to={'police'}>police</NavLink>
             <NavLink to={'profile'}>profile</NavLink>
+            <button onClick={test}>add</button>
             {
                 state.activeModal ? <PortalModalRoot>
                     <div className={s.t0}>
