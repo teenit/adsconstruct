@@ -24,7 +24,18 @@ const FrontPage = ()=>{
             <NavLink to={'profile'}>profile</NavLink>
             {
                 state.activeModal ? <PortalModalRoot>
-                    <div onClick={()=>{setState({...state,activeModal:false})}}>Click me</div>
+                    <div className={s.t0}>
+                        <div className={s.close} onClick={()=>{setState({...state,activeModal:false})}}></div>
+                        <div className={s.form}>
+                            <div className={s.top}>Выберите тип слота</div>
+                            <div className={s.mid}>
+                                <div className={s.full}></div>
+                                <div className={s.half}></div>
+                                <div className={s.quarter}></div>
+                                <div className={s.eighth}></div>
+                            </div>
+                        </div>
+                    </div>
                 </PortalModalRoot> : null
             }
             
