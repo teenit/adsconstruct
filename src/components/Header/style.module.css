@@ -103,31 +103,7 @@
 .buy__button p{
     margin: 0;
 }
-.modal__wrap{
-    width: 100%;
-    height: 100vh;
-    background-color: #00000077;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.modal__inner__flexbox{
-    width: 75%;
-    height: 92vh;
-    display: flex;
-    justify-content: end;
-}
-.modal__inner{
-    width: 300px;
-    height: max-content;
-    border-radius: 15px;
-    background-color: #fff;
-    padding: 25px;
-}
+
 .lang{
     position: absolute;
     left: 22.5%;

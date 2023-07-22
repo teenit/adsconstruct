@@ -6,13 +6,14 @@ import ProfilePage from './ProfilePage/ProfilePage'
 
 const Profile = () => {
     const [state,setState] = useState({
-        auth:true,
-        profilePage:false
+        auth:false,
+        profilePage:true
     })
   return (
     <div className={s.wrap}>
         {state.auth==true?<Auth/>:<ProfilePage/>}
     </div>
+
   )
 }
 

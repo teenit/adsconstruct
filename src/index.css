@@ -18,7 +18,7 @@ code {
   --light-gray-color:#b2b2b2
 }
 :hover{
-  transition: all .3s;
+  transition: all .1.5s;
 }
 ::selection{
   background-color: none;
@@ -34,15 +34,10 @@ Button{
 Button:hover{
   background-color: var(--main-color-hover) !important;
 }
-.modal__wrap{
-  width: 100%;
-  height: 100vh;
-  background-color: #00000077;
-  position: fixed;
-  left: 0;
-  top: 0;
-}
 .modal__inner{
   border-radius: 15px;
   background-color: #fff;
+}
+a{
+  text-decoration: none;
 }
