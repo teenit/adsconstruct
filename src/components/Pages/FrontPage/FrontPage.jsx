@@ -12,6 +12,7 @@ import SectionEight from "../../Sections/SectionEight/SectionEight";
 import PortalModalRoot from "../../Portals/PortalModalRoot";
 import { useDispatch, useSelector } from "react-redux";
 import { addBalans, minusBalans } from "../../../store/Slices/balansSlice";
+import SectionModal from "./SectionModal";
 
 const FrontPage = ()=>{
     const {tvmpCoin} = useSelector(state => state.tvmpCoin);
@@ -31,22 +32,6 @@ const FrontPage = ()=>{
             <NavLink to={'police'}>police</NavLink>
             <NavLink to={'profile'}>profile</NavLink>
             <button onClick={test}>add</button>
-            {
-                state.activeModal ? <PortalModalRoot>
-                    <div className={s.t0}>
-                        <div className={s.close} onClick={()=>{setState({...state,activeModal:false})}}></div>
-                        <div className={s.form}>
-                            <div className={s.top}>Выберите тип слота</div>
-                            <div className={s.mid}>
-                                <div className={s.full}></div>
-                                <div className={s.half}></div>
-                                <div className={s.quarter}></div>
-                                <div className={s.eighth}></div>
-                            </div>
-                        </div>
-                    </div>
-                </PortalModalRoot> : null
-            }
             
             <SectionOne/>
             <SectionTwo/>
