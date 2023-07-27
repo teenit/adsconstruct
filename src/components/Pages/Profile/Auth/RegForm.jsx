@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import s from './Auth.module.css'
 import { Button, Checkbox, FormControlLabel, FormGroup, MenuItem, Select, TextField } from '@mui/material';
+import { useDispatch} from 'react-redux';
+import { setLog } from '../../../../store/Slices/logSlice';
+import { setProfile } from '../../../../store/Slices/userSlice';
 
 const RegForm = () => {
+    const dispatch = useDispatch()
     const [regData, setRegData] = useState({
         nickname: {
             val: '',
@@ -12,12 +16,13 @@ const RegForm = () => {
             val: '',
             hasError: false
         },
-        password: {
+        pass: {
             val: '',
             hasError: false
         },
         date: '',
-        city: '',
+        name: '',
+        surname: '',
         bio: {
             val: '',
             hasError: false
@@ -26,9 +31,10 @@ const RegForm = () => {
     const finishRegData = {
         nickname: regData.nickname.val,
         email: regData.email.val,
-        password: regData.password.val,
+        pass: regData.pass.val,
+        name: regData.name,
+        surname: regData.surname,
         date: regData.date,
-        city: regData.city,
         bio: regData.bio.val,
     }
     const forbiddenSymbols = [' ', ',', ':', ';', '>', '<', '{', '}', '(', ')', '`', '~', '|', '+', '=', '^', '*']
@@ -52,13 +58,13 @@ const RegForm = () => {
                 <div className={s.options__row}>
                     <div className={s.option}>
                         <label htmlFor='nickname'><p>Ник</p></label>
-                        <TextField error={regData.nickname.hasError} required id='nickname' label="Ник" variant="outlined" helperText={regData.nickname.hasError == true ? "Этот ник недоступен" : "Введите хотя бы 1 символ"} onChange={(e) => {
+                        <TextField error={regData.nickname.hasError} required id='nickname' label="Ник" variant="outlined" helperText={regData.nickname.hasError == true ? "Этот ник недоступен" : "Введите от 1 до 15 символов"} onChange={(e) => {
                             setRegData((arg) => ({
                                 ...arg,
                                 nickname: {
                                     ...arg.nickname,
                                     val: e.target.value,
-                                    hasError: e.target.value.length < 1,
+                                    hasError: e.target.value.length < 1 || e.target.value.length>15,
                                 },
                             }))
 
@@ -81,13 +87,13 @@ const RegForm = () => {
 
                 <div className={s.option}>
                     <label htmlFor='password'><p>Пароль</p></label>
-                    <TextField error={regData.password.hasError} type='password' required id='password' label="Пароль" variant="outlined" helperText={regData.password.hasError == true ? "Этот пароль не подходит" : "Пароль должен быть от 8 символов"} onChange={(e) => {
+                    <TextField error={regData.pass.hasError} type='password' required id='password' label="Пароль" variant="outlined" helperText={regData.pass.hasError == true ? "Этот пароль не подходит" : "Пароль должен быть от 8 до 15 символов"} onChange={(e) => {
                         setRegData((arg) => ({
                             ...arg,
-                            password: {
-                                ...arg.password,
+                            pass: {
+                                ...arg.pass,
                                 val: e.target.value,
-                                hasError: e.target.value.length < 8,
+                                hasError: e.target.value.length < 8 || e.target.value.length>15,
                             },
                         }))
                     }} onKeyDown={checkVal} />
@@ -98,15 +104,23 @@ const RegForm = () => {
                 <h3>Личная информация</h3>
                 <div className={s.options__row}>
                     <div className={s.option}>
-                        <label htmlFor='date'><p>Дата рождения</p></label>
-                        <TextField type='date' id='date' variant="outlined" onChange={(e) => {
-                            setRegData({ ...regData, date: e.target.value })
+                        <label htmlFor='name'><p>Имя</p></label>
+                        <TextField type='text' id='name' variant="outlined" onChange={(e) => {
+                            setRegData({ ...regData, name: e.target.value })
                         }} />
                     </div>
                     <div className={s.option}>
-                        <label htmlFor='city'><p>Город</p></label>
-                        <TextField type='text' id='city' variant="outlined" onChange={(e) => {
-                            setRegData({ ...regData, city: e.target.value })
+                        <label htmlFor='surname'><p>Фамилия</p></label>
+                        <TextField type='text' id='surname' variant="outlined" onChange={(e) => {
+                            setRegData({ ...regData, surname: e.target.value })
+                        }} />
+                    </div>
+                </div>
+                <div className={s.options__row}>
+                    <div className={s.option}>
+                        <label htmlFor='date'><p>Дата рождения</p></label>
+                        <TextField type='date' id='date' variant="outlined" onChange={(e) => {
+                            setRegData({ ...regData, date: e.target.value })
                         }} />
                     </div>
                 </div>
@@ -141,9 +155,12 @@ const RegForm = () => {
                 </div>
             </FormGroup>
             <Button variant="contained" onClick={() => {
-                if (regData.nickname.hasError == false && regData.email.hasError == false && regData.password.hasError == false && regData.bio.hasError == false && regData.nickname.val !== '' && regData.email.val !== '' && regData.password.val !== '' && check.conditions == false && check.politics == false) {
+                if (regData.nickname.hasError == false && regData.email.hasError == false && regData.pass.hasError == false && regData.bio.hasError == false && regData.nickname.val !== '' && regData.email.val !== '' && regData.pass.val !== '' && check.conditions == false && check.politics == false) {
                     alert("Регистрация прошла успешно!")
-                    console.log(finishRegData)
+                    console.log(finishRegData);
+                    dispatch(setLog(true))
+                    dispatch(setProfile(finishRegData))
+                    
 
                 }
             }}>Зарегистрироваться</Button>

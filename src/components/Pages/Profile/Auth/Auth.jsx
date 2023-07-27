@@ -6,8 +6,8 @@ import LogForm from './LogForm';
 
 const Auth = () => {
   const [form, setForm] = useState({
-    reg:true,
-    login:false,
+    reg:false,
+    login:true,
   })
   return (
     <div className={s.form__wrap}>

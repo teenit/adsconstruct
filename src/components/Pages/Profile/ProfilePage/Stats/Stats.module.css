@@ -1,0 +1,33 @@
+.stats__wrap {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-around;
+}
+
+.stats__block {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+}
+
+.text {
+    max-width: 90%;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.text h1,
+.text p,
+.text h3 {
+    margin: 0;
+    text-align: center;
+}
+
+.text h1 {
+    font-size: 40px;
+}
+

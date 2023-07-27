@@ -1,0 +1,34 @@
+.lang{
+    box-sizing: border-box;
+    border-top: none;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.lang img{
+    width: 25px;
+    height: 25px;
+}
+.lang__menu{
+    position: absolute;
+    top: 7.5%;
+    z-index: 999;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--main-color);
+    gap: 5px;
+    border-radius: 15px;
+    padding: 10px 15px;
+}
+.lang__menu p{
+    font-size: 14px;
+    margin: 0;
+    cursor: pointer;
+}
+.lang__menu p:hover{
+    color: var(--light-gray-color);
+}

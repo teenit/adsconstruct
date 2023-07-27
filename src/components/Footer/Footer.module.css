@@ -7,6 +7,9 @@
     justify-content: center;
     cursor: default;
 }
+.wrap a{
+    color: #fff;
+}
 .wrap h2{
     font-weight: bold;
     font-size: larger;

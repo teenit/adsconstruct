@@ -2,12 +2,16 @@ import React, { useState } from 'react'
 import s from './Auth.module.css'
 import { Button, TextField } from '@mui/material'
 import AuthModal from './AuthModals/AuthModal'
+import { useDispatch } from 'react-redux'
+import { setLog } from '../../../../store/Slices/logSlice'
+import { setProfile } from '../../../../store/Slices/userSlice'
 
 const LogForm = () => {
+    const dispatch = useDispatch()
     const [logData, setLogData] = useState({
         nickname:'',
         email:'',
-        password:''
+        pass:''
     })
 const [change, setChange] = useState({
     nickname: true,
@@ -26,11 +30,11 @@ return (
 
                     }}>Почта</span></p></label>
                     {change.nickname == true ?
-                        <TextField required id='nickname' label="Ник" variant="outlined" onChange={(e) => {
+                        <TextField value={logData.nickname} required id='nickname' label="Ник" variant="outlined" onChange={(e) => {
                             setLogData({ ...logData, nickname: e.target.value })
                         }} />
                         :
-                        <TextField required id='email' label="Почта" variant="outlined" onChange={(e) => {
+                        <TextField value={logData.email} required id='email' label="Почта" variant="outlined" onChange={(e) => {
                             setLogData({ ...logData, email: e.target.value })
                         }} />
                     }
@@ -38,14 +42,16 @@ return (
                 </div>
                 <div className={s.option}>
                     <label htmlFor='password'><p>Пароль</p></label>
-                    <TextField required id="password" label="Пароль" variant="outlined" onChange={(e) => {
-                        setLogData({ ...logData, password: e.target.value })
+                    <TextField type='password' required id="password" label="Пароль" variant="outlined" onChange={(e) => {
+                        setLogData({ ...logData, pass: e.target.value })
                     }} />
                 </div>
             </div>
         </div>
         <Button variant="contained" onClick={() => {
             console.log(logData)
+            dispatch(setLog(true))
+            dispatch(setProfile(logData))
         }}>Войти</Button>
         <p onClick={()=>{
             setModal(true)

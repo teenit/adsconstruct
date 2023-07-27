@@ -3,39 +3,31 @@ import s from "./style.module.css"
 import { Button, InputBase, TextField } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import shop from '../../img/corz.png'
-import globe from '../../img/globe.png'
 import ProfileModal from "./ProfileModal";
+import Lang from "./Lang";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 const Header = () => {
+    const { tvmpCoin } = useSelector(state => state.tvmpCoin)
     const [inputData, setInputData] = useState('')
     const [active, setActive] = useState(false)
     const [profileModal, setProfileModal] = useState(false)
-    const [lang, setLang] = useState(false)
     return (
         <div className={s.header}>
             <div className={s.logo__wrap}>
-                <div className={s.logo}></div>
+                <Link to='/'><div className={s.logo}></div></Link>
             </div>
             <div className={s.header__inner}>
                 <div className={s.inner__block}>
-                    <p>Баланс: <span><b>200</b></span></p>
+                    <p>Баланс: <span><b>{tvmpCoin}</b></span></p>
                     <Button className={s.buy__button} variant="contained">
                         <p>купить</p>
                         <div className={s.img__wrap}>
                             <a href="#"><img src={shop} alt="Логотип" /></a>
                         </div>
                     </Button>
-                    <div className={s.lang}>
-                        <div style={{cursor:"pointer"}} onClick={() => {
-                            setLang(!lang)
-                        }}>
-                            <img src={globe} alt="Язык" />
-                        </div>
-                        {lang == true ? <div className={s.lang__menu}>
-                            <p>Русский</p>
-                            <p>Украинский</p>
-                            <p>Английский</p>
-                        </div> : null}
-                    </div>
+                    <Lang />
+
 
                 </div>
 
@@ -52,9 +44,7 @@ const Header = () => {
 
                             }} />
                                 : null}
-                            <div onClick={() => {
-                                console.log(inputData)
-                            }}>
+                            <div>
                                 <Search className={s.input__icon} />
                             </div>
                         </div>
@@ -64,7 +54,7 @@ const Header = () => {
                         }}>Профиль</p>
                         {profileModal == true ? <ProfileModal setModal={setProfileModal} /> : null}
                         <div className={s.line}></div>
-                        <p>Инструкция</p>
+                        <Link to='/instruction'><p>Инструкция</p></Link>
 
                     </div>
                 </div>
