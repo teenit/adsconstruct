@@ -2,16 +2,15 @@ import React, { useState } from 'react'
 import s from './Profile.module.css'
 import Auth from './Auth/Auth'
 import ProfilePage from './ProfilePage/ProfilePage'
+import { useSelector } from 'react-redux'
 
 
 const Profile = () => {
-    const [state,setState] = useState({
-        auth:false,
-        profilePage:true
-    })
+  const {log} = useSelector(state => state.log);
+
   return (
     <div className={s.wrap}>
-        {state.auth==true?<Auth/>:<ProfilePage/>}
+        {log==false?<Auth/>:<ProfilePage/>}
     </div>
 
   )

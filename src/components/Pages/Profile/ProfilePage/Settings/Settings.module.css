@@ -1,0 +1,109 @@
+.settings__wrap{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    gap: 50px;
+}
+.settings__option{
+    width: max-content;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 15px;
+}
+.settings__option h3, .settings__option p{
+    margin: 0;
+}
+.img__wrap {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.img__wrap img {
+    width: 100%;
+    height: 100%;
+}
+.buy__button{
+    width: max-content;
+    height: max-content;
+    padding: 7.5px 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.buy__button p{
+    margin: 0;
+}
+.payment__wrap{
+    display: flex;
+    gap: 25px;
+}
+
+
+.add__payment{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.add__payment img{
+    cursor: pointer;
+}
+.promos__wrap{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+.promo{
+    width: max-content;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 15px;
+}
+.promo__top{
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+.promo__date{
+    color: rgb(245, 134, 134);
+    font-weight: bold;
+    font-size: 18px;
+}
+.settings__column{
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+.red__button{
+    background-color: rgb(226, 118, 134) !important;
+  
+  }
+.red__button:hover{
+    background-color: rgb(250, 157, 171) !important;
+}
+.color__wrap{
+    display: flex;
+    gap: 5px;
+}
+.color{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.payment__panel{
+    display: flex;
+    gap: 7.5px;
+}
+.payment__panel img{
+    width: 15px;
+    height: 15px;
+}

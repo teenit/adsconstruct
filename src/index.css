@@ -13,7 +13,7 @@ code {
 }
 :root{
   --main-color:#1565c0;
-  --main-color-hover:rgb(139, 139, 214);
+  --main-color-hover:#8b8bd6;
   --dark-gray-color:#222;
   --light-gray-color:#b2b2b2
 }
@@ -22,7 +22,7 @@ code {
 }
 ::selection{
   background-color: none;
-  color: var(--light-gray-color);
+  color: var(--main-color);
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
