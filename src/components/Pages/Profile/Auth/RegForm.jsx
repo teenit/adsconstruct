@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import s from './Auth.module.css'
-import { Button, Checkbox, FormControlLabel, FormGroup, MenuItem, Select, TextField } from '@mui/material';
+import { Alert, Button, Checkbox, FormControlLabel, FormGroup, MenuItem, Select, Snackbar, TextField } from '@mui/material';
 import { useDispatch} from 'react-redux';
 import { setLog } from '../../../../store/Slices/logSlice';
 import { setProfile } from '../../../../store/Slices/userSlice';
@@ -51,6 +51,10 @@ const RegForm = () => {
         politics: false,
         conditions: false
     })
+    const [snackbar, setSnackbar] = useState({
+        open: false,
+        error: false
+      })
     return (
         <div className={s.form__inner}>
             <div className={s.options}>
@@ -160,11 +164,20 @@ const RegForm = () => {
                     console.log(finishRegData);
                     dispatch(setLog(true))
                     dispatch(setProfile(finishRegData))
-                    
+                    setSnackbar({...snackbar,open:true,error:false})
+
+                }else{
+                    setSnackbar({...snackbar,open:true,error:true})
 
                 }
             }}>Зарегистрироваться</Button>
-
+          <Snackbar open={snackbar.open} autoHideDuration={3000} onClose={() => {
+            setSnackbar({ ...snackbar, open: false })
+          }}>
+            <Alert severity={snackbar.error == true ? "error" : "success"}>
+              {snackbar.error == true ? "Проверьте содержание данных" : "Регистрация прошла успешно"}
+            </Alert>
+          </Snackbar>
         </div>
     )
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import s from './Account.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import change from '../../../../../img/edit.png'
-import { Button, TextField } from '@mui/material'
+import { Alert, Button, Snackbar, TextField } from '@mui/material'
 import { setProfile } from '../../../../../store/Slices/userSlice'
 
 const Account = ({ colorMas }) => {
@@ -40,6 +40,10 @@ const Account = ({ colorMas }) => {
   }
   const [edit, setEdit] = useState(false)
   const [open, setOpen] = useState(false)
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    error: false
+  })
 
   const forbiddenSymbols = [' ', ',', ':', ';', '>', '<', '{', '}', '(', ')', '`', '~', '|', '+', '=', '^', '*']
 
@@ -67,10 +71,21 @@ const Account = ({ colorMas }) => {
               dispatch(setProfile(finishData))
               console.log(finishData);
               setEdit(false)
-            }
+              setSnackbar({ ...snackbar, open: true, error: false })
 
+            } else {
+              setSnackbar({ ...snackbar, open: true, error: true })
+
+            }
           }}>Сохранить
           </Button> : null}
+          <Snackbar open={snackbar.open} autoHideDuration={3000} onClose={() => {
+            setSnackbar({ ...snackbar, open: false })
+          }}>
+            <Alert severity={snackbar.error == true ? "error" : "success"}>
+              {snackbar.error == true ? "Проверьте содержание данных" : "Данные сохранены"}
+            </Alert>
+          </Snackbar>
         </div>
         {data.nickname.hasError == true ? <p>Недопустимое значение: ник</p> : null}
         {data.email.hasError == true ? <p>Недопустимое значение: почта</p> : null}
