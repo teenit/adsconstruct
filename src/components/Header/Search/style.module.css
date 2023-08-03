@@ -1,0 +1,9 @@
+.result{
+    width: max-content;
+    background-color: #777;
+    color: #fff;
+    position: absolute;
+    top: 50px;
+    right: 35%;
+    padding: 10px;
+}

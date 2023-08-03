@@ -8,6 +8,7 @@ import Profile from "../Pages/Profile/Profile";
 import Police from "../Pages/Police/Police";
 import Section from "../BuySection/Section";
 import { useSelector } from "react-redux";
+
 const App = ()=>{
     const { code } = useSelector(state => state.sectionType)
     return(

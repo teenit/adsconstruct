@@ -105,3 +105,8 @@
 .buy__button p{
     margin: 0;
 }
+.words{
+    height: 100px;
+    width: 100px;
+    background-color: gray;
+}
