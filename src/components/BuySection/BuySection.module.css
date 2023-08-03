@@ -50,6 +50,7 @@
     background-color: #00000033;
     display: grid;
     gap: 10px;
+    overflow: hidden;
 }
 .section:hover{
     transition: all .3s;
@@ -145,4 +146,50 @@
     display: flex;
     align-items: center;
     padding: 10px;
+}
+
+.name{
+    display: flex;
+    opacity: 0;
+    margin: auto;
+    width: 125px;
+    height: 25px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 20px 20px;
+    position: absolute;
+    background-color: #353935;
+    font-weight: 500;
+    font-family: sans-serif;
+    transform: translateY(-100%);
+}
+.section:hover .name{
+    transition: all .3s;
+    transform: translateY(0%);
+    opacity: 1;
+    color: white;
+}
+
+.prices{
+    display: flex;
+    opacity: 0;
+    margin: auto;
+    width: 125px;
+    height: 25px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px 20px 0 0;
+    position: absolute;
+    background-color: #353935;
+    font-weight: 500;
+    font-family: sans-serif;
+    transform: translateY(400%);
+}
+.section:hover .prices{
+    transition: all .3s;
+    transform: translateY(305%);
+    opacity: 1;
+    color: white;
 }
