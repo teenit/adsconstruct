@@ -7,10 +7,11 @@ import ProfileModal from "./ProfileModal";
 import Lang from "./Lang";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import add from '../../img/add.png'
-import SectionModal from "../Pages/FrontPage/SectionModal";
+import add from '../../img/add-white.png'
+import SectionModal from "../BuySection/SectionModal";
 const Header = () => {
     const { tvmpCoin } = useSelector(state => state.tvmpCoin)
+    const { log } = useSelector(state => state.log)
     const [inputData, setInputData] = useState('')
     const [active, setActive] = useState(false)
     const [profileModal, setProfileModal] = useState(false)
@@ -59,11 +60,13 @@ const Header = () => {
                         <div className={s.line}></div>
                         <Link to='/instruction'><p>Инструкция</p></Link>
                         <div className={s.line}></div>
+                        {log==true?
                         <div className={s.img__wrap} onClick={()=>{
                             setSectionModal(true)
                         }}>
                             <img src={add} alt="" />
                         </div>
+                        :null}
                         {sectionModal == true?<SectionModal setSectionModal = {setSectionModal} />: null}
                     </div>
                 </div>

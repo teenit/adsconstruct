@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import s from './Modals.module.css';
 import PortalModalRoot from '../Portals/PortalModalRoot';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@mui/material'
+import { setAccount, setSections, setSettings, setSlots, setStats } from '../../store/Slices/profileModalSlice';
 
 
 const ProfileModal = ({ setModal }) => {
+  const { dispatchStats, dispatchAccount, dispatchSections, dispatchSlots, dispatchSettings } = useSelector(state => state.profileModal)
   const {log} = useSelector(state => state.log);
+  const dispatch = useDispatch()
  const [activeOption, setActiveOption] = useState({
     stats: false,
     account: false,
+    sections: false,
     slots: false,
     settings: false,
   });
@@ -29,6 +33,7 @@ const ProfileModal = ({ setModal }) => {
                         setActiveOption({ ...activeOption, stats: false })
                       }}> <Link to="/profile" onClick={()=>{
                         setModal(false)
+                        dispatch(setStats(true))
                       }} >Статистика</Link>              
                       </p>
                     </div>
@@ -38,9 +43,21 @@ const ProfileModal = ({ setModal }) => {
                       }} onMouseLeave={() => {
                         setActiveOption({ ...activeOption, account: false })
                       }}>
+                        <NavLink to={"/profile#account"}onClick={()=>{
+                        setModal(false)
+                      }} >Аккаунт</NavLink>  
+                      </p>
+                    </div>
+                    <div className={`${s.option} ${activeOption.sections == true ? s.active : ''}`}>
+                      <p onMouseEnter={() => {
+                        setActiveOption({ ...activeOption, sections: true })
+                      }} onMouseLeave={() => {
+                        setActiveOption({ ...activeOption, sections: false })
+                      }}>
                         <Link to="/profile" onClick={()=>{
                         setModal(false)
-                      }} >Аккаунт</Link>  
+                        dispatch(setSections(true))
+                      }} >Секции</Link>  
                       </p>
                     </div>
                     <div className={`${s.option} ${activeOption.slots == true ? s.active : ''}`}>
@@ -51,6 +68,7 @@ const ProfileModal = ({ setModal }) => {
                       }}>
                         <Link to="/profile" onClick={()=>{
                         setModal(false)
+                        dispatch(setSlots(true))
                       }} >Слоты</Link>  
                       </p>
                     </div>
@@ -62,6 +80,7 @@ const ProfileModal = ({ setModal }) => {
                       }}>
                         <Link to="/profile" onClick={()=>{
                         setModal(false)
+                        dispatch(setSettings(true))
                       }} >Настройки</Link>  
                       </p>
                     </div>

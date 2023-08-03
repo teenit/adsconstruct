@@ -14,7 +14,7 @@ const Card = ({ item, index, colorMas }) => {
                 <p>Активен: {item.isActive}</p>
                 <Button variant='contained'>Продлить время</Button>
                 <Button className={s.red__button} variant='contained'>Отключить слот</Button>
-                <Button className={s.red__button} variant='contained'>продать слот</Button>
+                <Button className={s.red__button} variant='contained'>Удалить слот</Button>
             </div>
         </div>
     )
