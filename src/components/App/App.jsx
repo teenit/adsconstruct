@@ -6,8 +6,10 @@ import Instructions from "../Pages/Instructions/Instructions";
 import { Route, Routes } from "react-router-dom";
 import Profile from "../Pages/Profile/Profile";
 import Police from "../Pages/Police/Police";
-
+import Section from "../BuySection/Section";
+import { useSelector } from "react-redux";
 const App = ()=>{
+    const { code } = useSelector(state => state.sectionType)
     return(
         <>
             <Header />
@@ -16,6 +18,7 @@ const App = ()=>{
                 <Route path="/instruction" element={<Instructions />} />
                 <Route path="/police" element={<Police/> } />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/section/:code" element={<Section />} />
             </Routes>
             <Footer />
         </>
