@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    sectionType:""
+    sectionType:"",
+    code:""
 }
 
 const sectionSlice = createSlice({
@@ -12,9 +13,13 @@ const sectionSlice = createSlice({
     reducers:{
         setSection(state,action){
             state.sectionType = action.payload;
-        }
+        },
+        setCode(state,action){
+            state.code = action.payload;
+        },
+
     }
 })
 
-export const {setSection} = sectionSlice.actions;
+export const {setSection,setCode} = sectionSlice.actions;
 export default sectionSlice.reducer

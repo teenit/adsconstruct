@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import s from './frontPage.module.css'
-import PortalModalRoot from "../../Portals/PortalModalRoot";
-import cross from "../../../img/cross.png"
-import SectionThree from "../../Sections/SectionThree/SectionThree";
+import s from './BuySection.module.css'
+import PortalModalRoot from "../Portals/PortalModalRoot";
+import cross from "../../img/cross.png"
 import ConfirmModal from "./ConfirmModal";
 
 const SectionModal = ({ setSectionModal }) => {
@@ -10,45 +9,38 @@ const SectionModal = ({ setSectionModal }) => {
         {
             type: "full",
             price: 100,
-            isModal: false
         },
         {
             type: "1/2",
             price: 80,
-            isModal: false
         },
         {
             type: "1/3",
             price: 60,
-            isModal: false
         },
         {
             type: "1/4",
             price: 50,
-            isModal: false
         },
         {
             type: "1/5",
             price: 40,
-            isModal: false
         },
         {
             type: "1/6",
             price: 30,
-            isModal: false
         },
         {
             type: "1/7",
             price: 25,
-            isModal: false
         },
         {
             type: "1/8",
             price: 20,
-            isModal: false
         }
     ]
     const [modal, setModal] = useState({ active: false, item: null })
+
     return (
         <PortalModalRoot>
             <div className={s.t0}>
@@ -57,19 +49,26 @@ const SectionModal = ({ setSectionModal }) => {
                     <div className={s.close} onClick={() => { setSectionModal(false) }}>
                         <img src={cross} alt="Закрыть окно" />
                     </div>
-                    <div className={s.top}>Выберите тип слота</div>
+                    <div className={s.top}>Выберите тип секции</div>
                     <div className={s.mid}>
                         {sectionsData.map((item, index) => {
                             return (
-                                <div className={s.full}>
-                                    <div className={`${s.section} ${s.full__section}`} onClick={() => {
-                                        setModal({ active: true, item: item })
-                                    }}>
-                                    </div>
-
-                                    <p>type: {item.type} price:{item.price}</p>
-
+                                <div className={`${s.section} ${index == 1 ? s.second : null}
+                                ${index == 2 ? s.third : null}
+                                ${index == 3 ? s.fourth : null}
+                                ${index == 4 ? s.fifth : null}
+                                ${index == 5 ? s.sixth : null}
+                                ${index == 6 ? s.seventh : null}
+                                ${index == 7 ? s.eighth : null}
+                                `} onClick={()=>{
+                                    setModal({active:true,item:item})
+                                }}>
+                                    <div className={`${s.block} ${s.special}`}></div>
+                                    {Array.from({ length: index }).map((index) => (
+                                        <div key={index} className={s.block}></div>
+                                    ))}
                                 </div>
+
 
                             )
 
@@ -77,8 +76,8 @@ const SectionModal = ({ setSectionModal }) => {
 
                     </div>
                     {
-                                        modal.active ? <ConfirmModal setSectionModal={setSectionModal} itemSection={modal.item} setModal={(active, item) => { setModal({ active: active, item: item }) }} /> : null
-                                    }
+                        modal.active ? <ConfirmModal setSectionModal={setSectionModal} itemSection={modal.item} setModal={(active, item) => { setModal({ active: active, item: item }) }} /> : null
+                    }
                 </div>
             </div>
 
