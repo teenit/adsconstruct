@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import s from "./style.module.css"
 import { Button, InputBase, TextField } from "@mui/material";
-import { Search } from "@mui/icons-material";
 import shop from '../../img/corz.png'
 import ProfileModal from "./ProfileModal";
 import Lang from "./Lang";
@@ -9,6 +8,9 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import add from '../../img/add-white.png'
 import SectionModal from "../BuySection/SectionModal";
+import PortalModalRoot from "../Portals/PortalModalRoot";
+import Search from "./Search/SearchMain";
+
 const Header = () => {
     const { tvmpCoin } = useSelector(state => state.tvmpCoin)
     const { log } = useSelector(state => state.log)
@@ -16,7 +18,11 @@ const Header = () => {
     const [active, setActive] = useState(false)
     const [profileModal, setProfileModal] = useState(false)
     const [sectionModal, setSectionModal] = useState(false)
+    const words=[ "adwasdsa","qwerty","weasd","jsajcvv","ujhggd","popiast"
+    ]
+    const [searchResult,setSeacrhResult]= useState({show:false,res:[]})
     return (
+        
         <div className={s.header}>
             <div className={s.logo__wrap}>
                 <Link to='/'><div className={s.logo}></div></Link>
@@ -37,21 +43,7 @@ const Header = () => {
 
                 <div className={s.inner__block}>
                     <div className={s.header__menu}>
-                        <div className={s.input} onMouseEnter={(e) => {
-                            setActive(true)
-                        }} onMouseLeave={(e) => {
-                            setActive(false)
-                        }}  >
-                            {active == true ? <InputBase value={inputData} className={s.header__input} placeholder="Введите ключевое слово" onChange={(e) => {
-                                setInputData(e.target.value)
-
-
-                            }} />
-                                : null}
-                            <div>
-                                <Search className={s.input__icon} />
-                            </div>
-                        </div>
+                       <Search />
                         <div className={s.line}></div>
                         <p onMouseEnter={() => {
                             setProfileModal(true)
