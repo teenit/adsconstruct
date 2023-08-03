@@ -14,19 +14,6 @@ const ConfirmModal = ({ setModal, itemSection, setSectionModal }) => {
     const { tvmpCoin } = useSelector(state => state.tvmpCoin);
     const [open, setOpen] = useState(false);
 
-    const generateRandomCode = () => {
-        const allowedChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-        let code = '';
-
-        for (let i = 0; i < 6; i++) {
-            const randomIndex = Math.floor(Math.random() * allowedChars.length);
-            code += allowedChars[randomIndex];
-        }
-
-        return code;
-    };
-
-    const [randomCode, setRandomCode] = useState(generateRandomCode());
 
     return (
         <PortalModalRoot>
@@ -40,10 +27,10 @@ const ConfirmModal = ({ setModal, itemSection, setSectionModal }) => {
                 <div className={s.input__wrap}>
                     <p>Ссылка на секцию</p>
                     <div className={s.copy__wrap}>
-                        <input className={s.copy__input} id='text' disabled value={"/section/"+randomCode} />
+                        <input className={s.copy__input} id='text' disabled />
                         <div className={s.copy__button} onClick={() => {
                             setOpen(true)
-                            navigator.clipboard.writeText("/section/"+randomCode)
+                            navigator.clipboard.writeText("link")
                         }}>
                             <img src={copy} alt="Копировать ссылку" />
                         </div>
@@ -59,14 +46,13 @@ const ConfirmModal = ({ setModal, itemSection, setSectionModal }) => {
                 <p>Тип секции: {itemSection.type}</p>
                 <p>Цена секции: {itemSection.price}</p>
                 <div className={s.buttons__wrap}>
-                    <Link to={"section/" + randomCode}>
+                    <Link to='/'>
                         <Button variant='contained' onClick={() => {
                             if (tvmpCoin >= itemSection.price) {
                                 setModal({ active: false })
                                 setSectionModal(false)
                                 dispatch(minusBalans(itemSection.price))
                                 dispatch(setSection(itemSection.type))
-                                dispatch(setCode(randomCode))
                             } else {
                                 alert("error")
                             }

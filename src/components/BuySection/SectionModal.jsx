@@ -53,8 +53,7 @@ const SectionModal = ({ setSectionModal }) => {
                     <div className={s.mid}>
                         {sectionsData.map((item, index) => {
                             return (
-                                <div className={`${s.section} 
-                                ${index == 1 ? s.second : null}
+                                <div key={index} className={`${s.section} ${index == 1 ? s.second : null}
                                 ${index == 2 ? s.third : null}
                                 ${index == 3 ? s.fourth : null}
                                 ${index == 4 ? s.fifth : null}
