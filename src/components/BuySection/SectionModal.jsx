@@ -53,7 +53,8 @@ const SectionModal = ({ setSectionModal }) => {
                     <div className={s.mid}>
                         {sectionsData.map((item, index) => {
                             return (
-                                <div className={`${s.section} ${index == 1 ? s.second : null}
+                                <div className={`${s.section} 
+                                ${index == 1 ? s.second : null}
                                 ${index == 2 ? s.third : null}
                                 ${index == 3 ? s.fourth : null}
                                 ${index == 4 ? s.fifth : null}
@@ -63,6 +64,8 @@ const SectionModal = ({ setSectionModal }) => {
                                 `} onClick={()=>{
                                     setModal({active:true,item:item})
                                 }}>
+                                    <div className={s.name}><p>{item.type}</p></div>
+                                    <div className={s.prices}><p>{item.price}</p></div>
                                     <div className={`${s.block} ${s.special}`}></div>
                                     {Array.from({ length: index }).map((index) => (
                                         <div key={index} className={s.block}></div>

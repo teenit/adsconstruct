@@ -6,7 +6,6 @@ import Slots from './Slots/Slots'
 import Settings from './Settings/Settings'
 import Sections from './Sections/Sections'
 import { useSelector } from 'react-redux'
-import ScrollableAnchor from 'react-scrollable-anchor'
 const ProfilePage = () => {
   const { dispatchStats, dispatchAccount, dispatchSections, dispatchSlots, dispatchSettings } = useSelector(state => state.profileModal)
   const [activeOption, setActiveOption] = useState({
