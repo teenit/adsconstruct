@@ -8,6 +8,7 @@ import { setProfile } from '../../../../../store/Slices/userSlice'
 const Account = ({ colorMas }) => {
   const dispatch = useDispatch()
   const { nickname, email, pass, name, surname, date, bio } = useSelector(state => state.user)
+
   const [data, setData] = useState({
     nickname: {
       val: nickname,

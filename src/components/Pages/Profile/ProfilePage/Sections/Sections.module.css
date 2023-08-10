@@ -16,6 +16,10 @@
  grid-template-rows: 1fr 1fr;
  gap: 25px;
 }
+.section__panel{
+    display: flex;
+    gap: 15px;
+}
 .section__type{
     width: max-content;
     display: flex;
@@ -56,4 +60,26 @@
   }
 .red__button:hover{
     background-color: rgb(250, 157, 171) !important;
+}
+.option{
+    display: flex;
+    gap: 5px;
+}
+.modal__inner{
+    width: max-content;
+    height: max-content;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.modal__inner h3, .modal__inner p{
+    margin: 0;
+}
+.edit__option{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
