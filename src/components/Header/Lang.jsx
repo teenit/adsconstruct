@@ -8,16 +8,10 @@ const Lang = () => {
 
     return (
         <div className={s.lang}>
-            <div style={{ cursor: "pointer" }} onClick={() => {
-                setLang(!lang)
-            }}>
-                <img src={globe} alt="Язык" />
+            <div className={s.lang__iner}>
+                <img src={globe} alt="" />
+                <div className={s.vibor}></div>
             </div>
-            {lang == true ? <div className={s.lang__menu}>
-                <p>Русский</p>
-                <p>Украинский</p>
-                <p>Английский</p>
-            </div> : null}
         </div>
     )
 }
