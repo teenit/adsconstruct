@@ -7,17 +7,24 @@ const Instructions = ()=>{
         <div className={s.wrap}>
             <div className={s.wrap__80}>
                 <div className={s.wrap__mid}>
-                    <h1>Инструкция</h1>
+                    <h1>Инструкции</h1>
                 </div>
                 <div className={s.wrap__info}>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi reprehenderit, repellendus, natus ullam, maxime nisi eos perferendis consequatur quos aut aspernatur sunt illo numquam! Quae dolore laborum facilis eligendi! Ea.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi reprehenderit, repellendus, natus ullam, maxime nisi eos perferendis consequatur quos aut aspernatur sunt illo numquam! Quae dolore laborum facilis eligendi! Ea.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi reprehenderit, repellendus, natus ullam, maxime nisi eos perferendis consequatur quos aut aspernatur sunt illo numquam! Quae dolore laborum facilis eligendi! Ea.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi reprehenderit, repellendus, natus ullam, maxime nisi eos perferendis consequatur quos aut aspernatur sunt illo numquam! Quae dolore laborum facilis eligendi! Ea.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi reprehenderit, repellendus, natus ullam, maxime nisi eos perferendis consequatur quos aut aspernatur sunt illo numquam! Quae dolore laborum facilis eligendi! Ea.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi reprehenderit, repellendus, natus ullam, maxime nisi eos perferendis consequatur quos aut aspernatur sunt illo numquam! Quae dolore laborum facilis eligendi! Ea.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi reprehenderit, repellendus, natus ullam, maxime nisi eos perferendis consequatur quos aut aspernatur sunt illo numquam! Quae dolore laborum facilis eligendi! Ea.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi reprehenderit, repellendus, natus ullam, maxime nisi eos perferendis consequatur quos aut aspernatur sunt illo numquam! Quae dolore laborum facilis eligendi! Ea.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi reprehenderit, repellendus, natus ullam, maxime nisi eos perferendis consequatur quos aut aspernatur sunt illo numquam! Quae dolore laborum facilis eligendi! Ea.</p>
+                    <p><b>TVMP коины, что это такое?</b>
+                    <br />
+                    <br />TVMP коины это внутренняя валюта сайта AdsConstruct.
+                    <br />Именно за её счёт совершаются все внутрисайтовые покупки.
+                    <br />Купить её можно во вкладке "Купить", соотношение TVMP коина к доллару - 1 к 1.
+                    <br />Увидеть ваше текущее количество TVMP коинов можно в Вашем профиле или в левом верхнем углу главной страницы.
+                    </p>
+                    <p><b>Как работает покупка секций?</b>
+                    <br />
+                    <br />Начнём с того что секции это какая то часть от слота, слот в свою очередь это блок размеров в экран вашего устройства.
+                    <br />Секций бывает 8 типов их вы можете увидеть нажав на + в правом верхнем углу страницы.
+                    <br />Нажмите на интересующую вас секцию чтобы приобрести её, после покупки она добавится на главную страницу.
+                    <br />В Вашем профиле вы можете изменять вашу секцию с учётом политики сайта.
+                    <br />
+                    </p>
                 </div>
             </div>
         </div>
