@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    sectionType:[],
+    count:0,
+    sections:[],
 }
 
 const sectionSlice = createSlice({
@@ -11,11 +12,18 @@ const sectionSlice = createSlice({
     initialState,
     reducers:{
         setSection(state,action){
-            state.sectionType.push(action.payload);
+            state.sections.push(action.payload);
+        },
+        removeSection(state,action){
+            const newData = [...state.sections]
+            state.sections = newData.splice(newData.indexOf(action.payload),1)
+        },
+        setCount(state,action){
+            state.count+=action.payload;
         },
 
     }
 })
 
-export const {setSection} = sectionSlice.actions;
+export const {setSection, removeSection, setCount} = sectionSlice.actions;
 export default sectionSlice.reducer

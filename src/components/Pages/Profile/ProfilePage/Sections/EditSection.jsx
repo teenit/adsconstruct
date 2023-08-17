@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from './Sections.module.css'
 import PortalModalRoot from '../../../../Portals/PortalModalRoot'
 import { Button, TextField } from '@mui/material'
+import ConfirmModal from './ConfirmModal'
+import { useSelector } from 'react-redux'
 
-const EditSection = ({setSectionsData,setModal,item,dataItem}) => {
+const EditSection = ({setData,setModal,dataItem, data}) => {
+    const [confirmModal, setConfirmModal] = useState(false)
+    const { sections,count } = useSelector(state => state.sections);
+
   return (
     <PortalModalRoot>
         <div className={s.modal__inner}>
@@ -12,15 +17,20 @@ const EditSection = ({setSectionsData,setModal,item,dataItem}) => {
                 <label htmlFor="title">
                     <p>Название секции</p>
                 </label>
-                <TextField variant='outlined' id='title' value={dataItem.title} onChange={(e)=>{
-                      setSectionsData({...item,data:{...dataItem,title:e.target.value}})
+                <TextField variant='outlined' id='title' value={dataItem.name} onChange={(e)=>{
+                      setData({...data,data:[{...dataItem,name:e.target.value}]})
 
                 }}></TextField>
             </div>
         <Button variant='contained' onClick={()=>{
             setModal(false)
         }}>сохранить</Button>
+        <Button className={s.red__button} variant='contained' onClick={()=>{
+            setConfirmModal(true)
+            console.log(sections.indexOf(dataItem));
+        }}>Продать секцию</Button>
         </div>
+        {confirmModal?<ConfirmModal setModal={setModal} setConfirmModal={setConfirmModal} dataItem={dataItem}/>:null}
     </PortalModalRoot>
   )
 }
