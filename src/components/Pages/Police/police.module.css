@@ -32,3 +32,55 @@
     margin-bottom: 35px;
     line-height: 30px;
 }
+
+
+
+
+
+
+
+
+
+
+.ggg{
+    background: linear-gradient(to right,  rgb(171, 137, 186), cyan);
+    padding: 10px;
+    border-radius: 10px;
+    border: solid rgb(72, 117, 201) 1px;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    width: 25%;
+    color: rgb(55, 102, 190);
+}
+.edit{
+    cursor: pointer;
+}
+.edit:hover{
+    transition: all .3s;
+    transform: scale(1.5);
+}
+.text__editing{
+    color: white;
+}
+.bold{
+    font-weight: bolder;
+}
+.italic{
+    font-style: italic;
+}
+.underlined{
+    text-decoration: underline;
+}
+.left{
+    text-align: left;
+}
+.center{
+    text-align: center;
+}
+.right{
+    text-align: right;
+}
+.special{
+    color: rgb(212, 255, 0);
+}
