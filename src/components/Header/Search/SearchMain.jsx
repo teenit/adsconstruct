@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import s from './style.module.css'
 import { Input, InputBase } from "@mui/material";
-import { Search } from "@mui/icons-material";
 import PortalSearchResult from "../../Portals/PortalSearchResult";
+import search from '../../../img/search.png'
 
 
 const words = [{text:"weofpjwe"},{text:"fewwewf"},{text:"ujjyuyuj"},{text:"434"},{text:"0oyo0t"},{text:"agyud"},{text:"regererg"},{text:"ekrgkepko"},]
@@ -51,10 +51,14 @@ const SearchMain = () =>{
 
     return(
         <div>
+            <div className={s.input__wrap}>        
             <input variant = {'standard'} value={state.value} className={s.header__input} placeholder="Введите ключевое слово" onChange={(e) => {
                         getResult(e.target.value)
                     }}/>
-            <Search className={s.input__icon} />
+                    <div className={s.search__container}> <img src={search} alt=""  className={s.search__img}/></div>
+                       
+                    
+                    </div>
             {
                 state.showResult ? 
             

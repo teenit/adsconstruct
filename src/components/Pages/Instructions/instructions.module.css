@@ -4,7 +4,7 @@
     height: 100%;
     border-bottom: solid 2px rgb(255, 255, 255);
     color: white;
-    padding-top: 10px;
+    padding-top: 75px;
     padding-bottom: 75px;
 }
 .wrap__80{
@@ -20,13 +20,16 @@
 }
 .wrap__mid >h1{
     font-size: 2.8em;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .wrap__info{
     font-weight: 500;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .wrap__info >p{
     margin-top: 35px;
     margin-bottom: 35px;
+    padding-bottom: 3%;
+    border-bottom: solid 1px white;
+    line-height: 30px;
 }
