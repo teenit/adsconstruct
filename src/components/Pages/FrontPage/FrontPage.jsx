@@ -15,14 +15,14 @@ import SectionEight from '../../Sections/SectionEight/SectionEight'
 
 const FrontPage = () => {
     const { tvmpCoin } = useSelector(state => state.tvmpCoin);
-    const { sectionType } = useSelector(state => state.sectionType);
+    const { sections } = useSelector(state => state.sections);
 
     console.log(tvmpCoin)
     const dispatch = useDispatch()
     function test() {
 
         dispatch(minusBalans(5))
-        console.log(sectionType)
+        console.log(sections)
     }
     return (
         <div className={s.wrap}>
@@ -30,17 +30,17 @@ const FrontPage = () => {
             <NavLink to={'police'}>police</NavLink>
             <NavLink to={'profile'}>profile</NavLink>
             <button onClick={test}>add</button>
-            {sectionType.map((item, index) => {
+            {sections.map((item, index) => {
                 return (
                     <div className={s.wrap}>
-                        {item == "full" ? <SectionOne /> : null}
-                        {item == "1/2" ? <SectionTwo /> : null}
-                        {item == "1/3" ? <SectionThree /> : null}
-                        {item == "1/4" ? <SectionFour /> : null}
-                        {item == "1/5" ? <SectionFive /> : null}
-                        {item == "1/6" ? <SectionSix /> : null}
-                        {item == "1/7" ? <SectionSeven /> : null}
-                        {item == "1/8" ? <SectionEight /> : null}
+                        {item.type == "full" ? <SectionOne key={index} /> : null}
+                        {item.type == "1/2" ? <SectionTwo key={index} /> : null}
+                        {item.type == "1/3" ? <SectionThree key={index} /> : null}
+                        {item.type == "1/4" ? <SectionFour key={index} /> : null}
+                        {item.type == "1/5" ? <SectionFive key={index} /> : null}
+                        {item.type == "1/6" ? <SectionSix key={index} /> : null}
+                        {item.type == "1/7" ? <SectionSeven key={index} /> : null}
+                        {item.type == "1/8" ? <SectionEight key={index} /> : null}
                     </div>
                 )
 

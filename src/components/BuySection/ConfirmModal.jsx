@@ -5,7 +5,7 @@ import { Alert, Button, TextField } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { minusBalans } from '../../store/Slices/balansSlice';
-import { setCode, setSection } from '../../store/Slices/sectionSlice';
+import { removeSection, setCode, setCount, setSection } from '../../store/Slices/sectionSlice';
 import { Link } from 'react-router-dom';
 import copy from '../../img/copy.png';
 
@@ -13,7 +13,12 @@ const ConfirmModal = ({ setModal, itemSection, setSectionModal }) => {
     const dispatch = useDispatch();
     const { tvmpCoin } = useSelector(state => state.tvmpCoin);
     const [open, setOpen] = useState(false);
-
+    const [sectionData,setSectionData]  = useState({
+        name:"",
+        type: itemSection.type,
+        isUsed:false,
+        price:itemSection.price
+    })
 
     return (
         <PortalModalRoot>
@@ -22,7 +27,9 @@ const ConfirmModal = ({ setModal, itemSection, setSectionModal }) => {
                     <label htmlFor="name">
                         <p>Название секции</p>
                     </label>
-                    <TextField variant='outlined' id='name' />
+                    <TextField variant='outlined' id='name' value={sectionData.name} onChange={(e)=>{
+                        setSectionData({...sectionData,name:e.target.value})
+                    }} />
                 </div>
                 <div className={s.input__wrap}>
                     <p>Ссылка на секцию</p>
@@ -52,7 +59,8 @@ const ConfirmModal = ({ setModal, itemSection, setSectionModal }) => {
                                 setModal({ active: false })
                                 setSectionModal(false)
                                 dispatch(minusBalans(itemSection.price))
-                                dispatch(setSection(itemSection.type))
+                                dispatch(setSection(sectionData))
+                                dispatch(setCount(1))
                             } else {
                                 alert("error")
                             }
