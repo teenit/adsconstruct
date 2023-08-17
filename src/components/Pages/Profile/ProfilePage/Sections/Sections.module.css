@@ -45,6 +45,13 @@
 .card:hover{
     background-color: #ffffffbb;
 }
+.red__button{
+    background-color: rgb(226, 118, 134) !important;
+  
+  }
+.red__button:hover{
+    background-color: rgb(250, 157, 171) !important;
+}
 .img__wrap{
     width: 15px;
     height: 15px;
