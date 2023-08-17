@@ -160,24 +160,12 @@ const RegForm = () => {
             </FormGroup>
             <Button variant="contained" onClick={() => {
                 if (regData.nickname.hasError == false && regData.email.hasError == false && regData.pass.hasError == false && regData.bio.hasError == false && regData.nickname.val !== '' && regData.email.val !== '' && regData.pass.val !== '' && check.conditions == false && check.politics == false) {
-                    alert("Регистрация прошла успешно!")
                     console.log(finishRegData);
                     dispatch(setLog(true))
                     dispatch(setProfile(finishRegData))
-                    setSnackbar({...snackbar,open:true,error:false})
-
-                }else{
-                    setSnackbar({...snackbar,open:true,error:true})
 
                 }
             }}>Зарегистрироваться</Button>
-          <Snackbar open={snackbar.open} autoHideDuration={3000} onClose={() => {
-            setSnackbar({ ...snackbar, open: false })
-          }}>
-            <Alert severity={snackbar.error == true ? "error" : "success"}>
-              {snackbar.error == true ? "Проверьте содержание данных" : "Регистрация прошла успешно"}
-            </Alert>
-          </Snackbar>
         </div>
     )
 }
