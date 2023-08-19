@@ -193,3 +193,11 @@
     opacity: 1;
     color: white;
 }
+.buy__confirm{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10px;
+
+
+}

@@ -5,6 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     count:0,
     sections:[],
+    usedSections:[],
 }
 
 const sectionSlice = createSlice({
@@ -21,9 +22,12 @@ const sectionSlice = createSlice({
         setCount(state,action){
             state.count+=action.payload;
         },
+        setUsedBlocks(state,action){
+            state.usedSections.push(action.payload);
+        },
 
     }
 })
 
-export const {setSection, removeSection, setCount} = sectionSlice.actions;
+export const {setSection, removeSection, setCount,setUsedBlocks} = sectionSlice.actions;
 export default sectionSlice.reducer
