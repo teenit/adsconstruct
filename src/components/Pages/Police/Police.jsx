@@ -17,7 +17,7 @@ const Police = () => {
 
     const toggleColor = () => {
         const newStyles = { ...selectionStyles };
-        const newColor = newStyles.color ? "white" : color;
+        const newColor = color;
         newStyles.color = !newStyles.color;
         setSelectionStyles(newStyles);
         applyStyle("foreColor", newColor);
