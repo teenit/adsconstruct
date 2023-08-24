@@ -6,18 +6,19 @@ import Snackbar from '@mui/material/Snackbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { minusBalans } from '../../store/Slices/balansSlice';
 import { removeSection, setCode, setCount, setSection } from '../../store/Slices/sectionSlice';
-import { Link } from 'react-router-dom';
 import copy from '../../img/copy.png';
 
 const ConfirmModal = ({ setModal, itemSection, setSectionModal }) => {
     const dispatch = useDispatch();
     const { tvmpCoin } = useSelector(state => state.tvmpCoin);
     const [open, setOpen] = useState(false);
-    const [sectionData,setSectionData]  = useState({
-        name:"",
+    const [buy, setBuy] = useState(false)
+    const [sectionData, setSectionData] = useState({
+        name: "",
         type: itemSection.type,
-        isUsed:false,
-        price:itemSection.price
+        isUsed: false,
+        price: itemSection.price,
+        usedSections:[]
     })
 
     return (
@@ -27,22 +28,11 @@ const ConfirmModal = ({ setModal, itemSection, setSectionModal }) => {
                     <label htmlFor="name">
                         <p>Название секции</p>
                     </label>
-                    <TextField variant='outlined' id='name' value={sectionData.name} onChange={(e)=>{
-                        setSectionData({...sectionData,name:e.target.value})
+                    <TextField variant='outlined' id='name' value={sectionData.name} onChange={(e) => {
+                        setSectionData({ ...sectionData, name: e.target.value })
                     }} />
                 </div>
-                <div className={s.input__wrap}>
-                    <p>Ссылка на секцию</p>
-                    <div className={s.copy__wrap}>
-                        <input className={s.copy__input} id='text' disabled />
-                        <div className={s.copy__button} onClick={() => {
-                            setOpen(true)
-                            navigator.clipboard.writeText("link")
-                        }}>
-                            <img src={copy} alt="Копировать ссылку" />
-                        </div>
-                    </div>
-                </div>
+
                 <Snackbar open={open} autoHideDuration={3000} onClose={() => {
                     setOpen(false)
                 }}>
@@ -52,24 +42,45 @@ const ConfirmModal = ({ setModal, itemSection, setSectionModal }) => {
                 </Snackbar>
                 <p>Тип секции: {itemSection.type}</p>
                 <p>Цена секции: {itemSection.price}</p>
-                <div className={s.buttons__wrap}>
-                    <Link to='/'>
+                <p id="balance">Баланс: {tvmpCoin}</p>
+                {buy == false ?
+                    <div className={s.buttons__wrap}>
+
                         <Button variant='contained' onClick={() => {
                             if (tvmpCoin >= itemSection.price) {
-                                setModal({ active: false })
-                                setSectionModal(false)
                                 dispatch(minusBalans(itemSection.price))
                                 dispatch(setSection(sectionData))
                                 dispatch(setCount(1))
+                                setBuy(true)
                             } else {
-                                alert("error")
+                                document.getElementById("balance").style.color = "red"
+
                             }
                         }}>Купить</Button>
-                    </Link>
-                    <Button variant='contained' onClick={() => {
-                        setModal()
-                    }}>Отмена</Button>
-                </div>
+
+                        <Button variant='contained' onClick={() => {
+                            setModal()
+                        }}>Отмена</Button>
+                    </div>
+                    : <div className={s.buy__confirm}>
+                        <div className={s.input__wrap}>
+                            <p>Ссылка на секцию</p>
+                            <div className={s.copy__wrap}>
+                                <input className={s.copy__input} id='text' disabled />
+                                <div className={s.copy__button} onClick={() => {
+                                    setOpen(true)
+                                    navigator.clipboard.writeText("link")
+                                }}>
+                                    <img src={copy} alt="Копировать ссылку" />
+                                </div>
+                            </div>
+                        </div>
+                        <Button variant='contained' onClick={()=>{
+                            setModal({active:false})
+                            setSectionModal(false)
+                        }}>На главную</Button>
+                    </div>}
+
             </div>
         </PortalModalRoot>
     );
