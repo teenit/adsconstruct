@@ -81,6 +81,22 @@
 .right{
     text-align: right;
 }
-.special{
-    color: rgb(212, 255, 0);
+.coloredit{
+    position: relative;
+    height: 40px;
+}
+.colortype{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: none;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+.coloredit:hover > .edit{
+    transition: all .3s;
+    transform: scale(1.5);
 }
