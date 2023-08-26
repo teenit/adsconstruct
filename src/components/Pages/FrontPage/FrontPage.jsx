@@ -26,10 +26,7 @@ const FrontPage = () => {
     }
     return (
         <div className={s.wrap}>
-            <NavLink to={'instruction'}>instruction</NavLink>
-            <NavLink to={'police'}>police</NavLink>
-            <NavLink to={'profile'}>profile</NavLink>
-            <button onClick={test}>add</button>
+            
             {sections.map((item, index) => {
                 return (
                     <div className={s.wrap}>
