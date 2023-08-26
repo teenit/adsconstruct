@@ -31,3 +31,13 @@
     font-size: 40px;
 }
 
+@media screen and (max-width:600px) {
+    .stats__wrap{
+        display: grid;
+        width: 100%;
+        height: max-content;
+        justify-content: center;
+        gap: 10px;
+    }
+
+}

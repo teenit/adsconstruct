@@ -91,3 +91,10 @@
 .text input[type="date"]{
     padding-left: 27.5px;
 }
+@media screen and (max-width:600px)  {
+    .account__row{
+        display: flex;
+        flex-direction: column;
+    }
+    
+}

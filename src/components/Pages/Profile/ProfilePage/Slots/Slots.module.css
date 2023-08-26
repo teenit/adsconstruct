@@ -60,3 +60,10 @@
     transition: all .3s;
     transform: scale(1.25,1.25);
 }
+@media screen and (max-width:600px)  {
+    .cards__wrap{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+}

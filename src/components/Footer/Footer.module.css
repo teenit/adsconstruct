@@ -67,3 +67,14 @@
     max-width: 25px;
     max-height: 25px;
 }
+@media screen and (max-width:600px) {
+.inner{
+    display: grid;
+    grid-template-columns: 1fr ;
+    text-align: center;
+    
+}
+
+
+
+}
