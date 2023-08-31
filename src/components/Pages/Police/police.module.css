@@ -43,22 +43,23 @@
 
 
 .ggg{
-    background: linear-gradient(to right,  rgb(171, 137, 186), cyan);
+    background: #353935;
     padding: 10px;
     border-radius: 10px;
-    border: solid rgb(72, 117, 201) 1px;
+    border: solid rgb(226, 236, 255) 1px;
     display: flex;
     justify-content: space-around;
     margin: auto;
-    width: 25%;
-    color: rgb(55, 102, 190);
+    width: max-content;
+    gap: 5px;
+    color: rgb(255, 255, 255);
 }
 .edit{
     cursor: pointer;
 }
 .edit:hover{
     transition: all .3s;
-    transform: scale(1.5);
+    transform: scale(1.2);
 }
 .text__editing{
     color: white;
@@ -82,8 +83,12 @@
     text-align: right;
 }
 .coloredit{
+    margin-left: 5px;
     position: relative;
     height: 40px;
+}
+.fontsize{
+    font-size: 200px;
 }
 .colortype{
     top: 0;
@@ -98,5 +103,32 @@
 }
 .coloredit:hover > .edit{
     transition: all .3s;
-    transform: scale(1.5);
+    transform: scale(1.2);
+}
+.line1{
+    margin-left: 5px;
+    width: 2px;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+}
+.line2{
+    margin-left: 5px;
+    width: 2px;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+}
+
+.text_vib{
+    display: block;
+    width: 150px;
+    height: 125px;
+    background-color: white;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all .3s;
+}
+.fontsizeinp{
+    width: 100px;
 }
