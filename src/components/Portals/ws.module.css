@@ -1,0 +1,14 @@
+.wrap{
+    top: 350px;
+    left: 920px;
+    right: 0;
+    bottom: 0;
+     width: 150px;
+     height: 125px;
+     background-color: #00000077;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     position: fixed;
+     
+ }
