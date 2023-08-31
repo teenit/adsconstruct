@@ -90,3 +90,11 @@
     flex-direction: column;
     gap: 5px;
 }
+@media screen and (max-width:600px)  {
+    .section__content{
+        width: max-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 25px;}
+}
