@@ -1,16 +1,6 @@
 import React, { useState } from "react";
 import s from "./frontPage.module.css";
-import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { addBalans, minusBalans } from "../../../store/Slices/balansSlice";
-import SectionOne from '../../Sections/SectionOne/SectionOne'
-import SectionTwo from '../../Sections/SectionTwo/SectionTwo'
-import SectionThree from '../../Sections/SectionThree/SectionThree'
-import SectionFour from '../../Sections/SectionFour/SectionFour'
-import SectionFive from '../../Sections/SectionFive/SectionFive'
-import SectionSix from '../../Sections/SectionSix/SectionSix'
-import SectionSeven from '../../Sections/SectionSeven/SectionSeven'
-import SectionEight from '../../Sections/SectionEight/SectionEight'
+
 import Sections from '../../Sections/Sections'
 
 const FrontPage = () => {
@@ -35,7 +25,27 @@ const FrontPage = () => {
                     defend: true,
                     defendTo: "13.09.2023 19:44",
                 }, position: 7,
-                idSection:""
+                idSection: "",
+                elements: [{
+                    position: 1,
+                    tag: "h1",
+                    data: [{
+                        isTag: true,
+                        tag: "span",
+                        attributes: {
+                            style: {},
+                            id: "",
+                        },
+                        data: "span text"
+                    }, {
+                        isTag: false,
+                        data: "text"
+                    }],
+                    attributes: {
+                        style: { color: "gray" },
+                        id: "tag-1"
+                    },
+                }]
             }, {
                 userName: "",
                 userNickname: "",
@@ -45,9 +55,9 @@ const FrontPage = () => {
                     defend: true,
                     defendTo: "13.09.2023 19:44",
                 }, position: 2,
-                idSection:""
+                idSection: ""
             },
-]
+            ]
         },
         {
             userName: "name",
@@ -69,18 +79,43 @@ const FrontPage = () => {
                     defend: true,
                     defendTo: "13.09.2023 19:44",
                 }, position: 1,
-                idSection:""
+                idSection: ""
             }
-]
+            ]
         },
 
     ]
-    const { sections } = useSelector(state => state.sections);
     return (
         <div className={s.wrap}>
-            <Sections data={mas[0]}/>
-            <Sections data={mas[1]}/>
-            
+            <Sections data={mas[0]} />
+            <Sections data={mas[1]} />
+            {mas[0].blocks[0].elements.map((item, index) => {
+                const styles = Object.keys(item.attributes.style).map(key => `${key}:${item.attributes[key]}`)
+                const attributes = Object.keys(item.attributes).map(key => `${key}=${item.attributes[key]}`)
+
+                return (
+                    `<${item.tag} ${attributes}">${item.data.map((dataItem, dataIndex) => {
+                        if (dataItem.isTag) {
+                            return `<${dataItem.tag}>${dataItem.data}</${dataItem.tag}>`
+                        } else {
+                            return dataItem.data
+                        }
+                    }).join('')}</${item.tag}>`
+                );
+            })}
+
+            {/* {mas[0].blocks[0].elements.map((item, index) => {
+                return (
+                    `<${item.tag} ${attributes=item.attributes.style}>${item.data.map((dataItem, dataIndex) => {
+                        if (dataItem.isTag) {
+                            return `<${dataItem.tag}>${dataItem.data}</${dataItem.tag}>`
+                        } else {
+                            return dataItem.data
+                        }
+                    }).join('')}</${item.tag}>`
+                )
+            })} */}
+
         </div>
 
 
