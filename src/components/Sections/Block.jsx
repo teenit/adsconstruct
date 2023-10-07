@@ -2,19 +2,23 @@ import React, { useEffect, useState } from 'react'
 import s from './Block.module.css'
 import plus from '../../img/add.png'
 import BlockModal from './BlockModal'
-const Block = ({ mas}) => {
+import { useSelector } from 'react-redux'
+
+const Block = ({buy}) => {
   const [hover, setHover] = useState(false)
   const [modal, setModal] = useState(false)
+  const { blocks } = useSelector(state => state.sections)
   return (
     <>
       <div className={s.block} onMouseEnter={() => { setHover(true) }} onMouseLeave={() => { setHover(false) }}>
-        {hover ? <div className={s.hover}>
+        {hover&&buy ? <div className={s.hover}>
           <img src={plus} alt="Купить блок" onClick={() => {
             setModal(true)
+            console.log(blocks);
           }} />
         </div> : null}
       </div>
-      {modal ? <BlockModal mas={mas} setModal={setModal} /> : null}
+      {modal ? <BlockModal setModal={setModal} /> : null}
 
     </>
 

@@ -1,0 +1,50 @@
+.module{
+    width: 100%;
+    min-height: 100vh;
+    background: lightgray;
+}
+.container{
+        display: grid; 
+        height: 100%;
+        width: 100%;
+        gap: 1px;
+    
+}
+.block{
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+.section1{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+.section2{
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr ;
+}
+.section3{
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr ;
+
+}
+.section4{
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: 1fr 1fr;
+}
+.section5{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr ;
+}
+.section6{
+    grid-template-columns: 1fr 1fr 1fr  ;
+    grid-template-rows: 1fr 1fr;
+}
+.section7{
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr  ;
+    grid-template-rows: 1fr;   
+}
+.section8{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}

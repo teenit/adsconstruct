@@ -5,7 +5,7 @@ import { Alert, Button, TextField } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { minusBalans } from '../../store/Slices/balansSlice';
-import { removeSection, setCode, setCount, setSection } from '../../store/Slices/sectionSlice';
+import { removeSection, setBlocks, setCode, setCount, setSection } from '../../store/Slices/sectionSlice';
 import copy from '../../img/copy.png';
 
 const ConfirmModal = ({ setModal, itemSection, setSectionModal }) => {
@@ -13,12 +13,12 @@ const ConfirmModal = ({ setModal, itemSection, setSectionModal }) => {
     const { tvmpCoin } = useSelector(state => state.tvmpCoin);
     const [open, setOpen] = useState(false);
     const [buy, setBuy] = useState(false)
-    const [sectionData, setSectionData] = useState({
+    var [sectionData, setSectionData] = useState({
         name: "",
         type: itemSection.type,
         isUsed: false,
         price: itemSection.price,
-        usedSections:[]
+        blocks: Array(8).fill(null)
     })
 
     return (
@@ -49,7 +49,8 @@ const ConfirmModal = ({ setModal, itemSection, setSectionModal }) => {
                         <Button variant='contained' onClick={() => {
                             if (tvmpCoin >= itemSection.price) {
                                 dispatch(minusBalans(itemSection.price))
-                                dispatch(setSection(sectionData))
+                                dispatch(setSection(sectionData.type))
+                                dispatch(setBlocks(sectionData.blocks))
                                 dispatch(setCount(1))
                                 setBuy(true)
                             } else {
@@ -75,8 +76,8 @@ const ConfirmModal = ({ setModal, itemSection, setSectionModal }) => {
                                 </div>
                             </div>
                         </div>
-                        <Button variant='contained' onClick={()=>{
-                            setModal({active:false})
+                        <Button variant='contained' onClick={() => {
+                            setModal({ active: false })
                             setSectionModal(false)
                         }}>На главную</Button>
                     </div>}
