@@ -4,7 +4,7 @@ import plus from '../../img/add.png'
 import BlockModal from './BlockModal'
 import { useSelector } from 'react-redux'
 
-const Block = ({buy}) => {
+const Block = ({buy,data}) => {
   const [hover, setHover] = useState(false)
   const [modal, setModal] = useState(false)
   const { blocks } = useSelector(state => state.sections)
@@ -19,7 +19,7 @@ const Block = ({buy}) => {
         </div> : null}
       </div>
       {modal ? <BlockModal setModal={setModal} /> : null}
-
+          
     </>
 
   )
