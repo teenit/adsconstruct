@@ -11,6 +11,9 @@
     align-items: center;
     justify-content: center;
 }
+.hover__error{
+    background-color: #ff000033;
+}
 .hover img:hover{
     cursor: pointer;
     transform: scale(1.5);

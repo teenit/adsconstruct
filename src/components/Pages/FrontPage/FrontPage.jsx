@@ -11,38 +11,76 @@ import SectionFive from '../../Sections/SectionFive/SectionFive'
 import SectionSix from '../../Sections/SectionSix/SectionSix'
 import SectionSeven from '../../Sections/SectionSeven/SectionSeven'
 import SectionEight from '../../Sections/SectionEight/SectionEight'
-
+import Sections from '../../Sections/Sections'
 
 const FrontPage = () => {
-    const { tvmpCoin } = useSelector(state => state.tvmpCoin);
+    const mas = [
+        {
+            userName: "name",
+            userNickname: "id",
+            buyTime: "12.09.2023 13:44",
+            property: {
+                defend: true,
+                defendTo: "13.09.2023 19:44",
+            },
+            id: "",
+            type: 8,
+            position: 1,
+            blocks: [{
+                userName: "",
+                userNickname: "",
+                id: "",
+                buyTime: "12.09.2023 13:44",
+                property: {
+                    defend: true,
+                    defendTo: "13.09.2023 19:44",
+                }, position: 7,
+                idSection:""
+            }, {
+                userName: "",
+                userNickname: "",
+                id: "",
+                buyTime: "12.09.2023 13:44",
+                property: {
+                    defend: true,
+                    defendTo: "13.09.2023 19:44",
+                }, position: 2,
+                idSection:""
+            },
+]
+        },
+        {
+            userName: "name",
+            userNickname: "id",
+            buyTime: "12.09.2023 13:44",
+            property: {
+                defend: true,
+                defendTo: "13.09.2023 19:44",
+            },
+            id: "",
+            type: 2,
+            position: 2,
+            blocks: [{
+                userName: "",
+                userNickname: "",
+                id: "",
+                buyTime: "12.09.2023 13:44",
+                property: {
+                    defend: true,
+                    defendTo: "13.09.2023 19:44",
+                }, position: 1,
+                idSection:""
+            }
+]
+        },
+
+    ]
     const { sections } = useSelector(state => state.sections);
-
-    console.log(tvmpCoin)
-    const dispatch = useDispatch()
-    function test() {
-
-        dispatch(minusBalans(5))
-        console.log(sections)
-    }
     return (
         <div className={s.wrap}>
+            <Sections data={mas[0]}/>
+            <Sections data={mas[1]}/>
             
-            {sections.map((item, index) => {
-                return (
-                    <div className={s.wrap}>
-                        {item.type == "full" ? <SectionOne key={index} /> : null}
-                        {item.type == "1/2" ? <SectionTwo key={index} /> : null}
-                        {item.type == "1/3" ? <SectionThree key={index} /> : null}
-                        {item.type == "1/4" ? <SectionFour key={index} /> : null}
-                        {item.type == "1/5" ? <SectionFive key={index} /> : null}
-                        {item.type == "1/6" ? <SectionSix key={index} /> : null}
-                        {item.type == "1/7" ? <SectionSeven key={index} /> : null}
-                        {item.type == "1/8" ? <SectionEight key={index} /> : null}
-                    </div>
-                )
-
-            })}
-
         </div>
 
 
