@@ -152,7 +152,7 @@ const FrontPage = () => {
                 const attributes = Object.keys(item.attributes).map(key => `${key}=${item.attributes[key]}`)
 
                 return (
-                    `<${item.tag} ${attributes}">${item.data.map((dataItem, dataIndex) => {
+                    `<${item.tag} ${attributes}">${item.data.map((dataItem) => {
                         if (dataItem.isTag) {
                             return `<${dataItem.tag}>${dataItem.data}</${dataItem.tag}>`
                         } else {
@@ -161,18 +161,6 @@ const FrontPage = () => {
                     }).join('')}</${item.tag}>`
                 );
             })}
-
-            {/* {mas[0].blocks[0].elements.map((item, index) => {
-                return (
-                    `<${item.tag} ${attributes=item.attributes.style}>${item.data.map((dataItem, dataIndex) => {
-                        if (dataItem.isTag) {
-                            return `<${dataItem.tag}>${dataItem.data}</${dataItem.tag}>`
-                        } else {
-                            return dataItem.data
-                        }
-                    }).join('')}</${item.tag}>`
-                )
-            })} */}
 
         </div>
 
