@@ -2,50 +2,77 @@ import React, { createElement, useEffect, useState, ReactDOM, Children } from 'r
 import s from './Block.module.css'
 import plus from '../../img/add.png'
 import BlockModal from './BlockModal'
-import { useSelector } from 'react-redux'
+import { Button } from '@mui/material'
+import ImgModal from './ImgModal'
 
-const makeElement = (element, data) =>{
-  console.log(element,data)
-let a = `<div>${data}</div>`;
-  switch (element){
+const makeElement = (element, data) => {
+  let a = `<div>${data}</div>`;
+  switch (element) {
     case "h1":
-      a= `<h1>${data}</h1>`
+      a = `<h1>${data}</h1>`
       break;
     case "p":
-      a= `<p>${data}</p>`
+      a = `<p>${data}</p>`
       break;
     default:
-      a= `<div>${data}</div>`
+      a = `<div>${data}</div>`
       break;
-    }
-
-    return a;
   }
-  
 
-const Block = ({buy,data,SectionData}) => {
-  const [hover, setHover] = useState(false)
-  const [modal, setModal] = useState(false)
-  const { blocks } = useSelector(state => state.sections)
+  return a;
+}
 
-  return(
-    <div className={`${s.block} ${buy?'bought':'not-bought'}`}>
+
+const Block = ({ buy, data, SectionData }) => {
+  const [state, setState] = useState(false)
+  const [mas, setMas] = useState({ ...data })
+  const [modal, setModal] = useState({
+    block:false,
+  })
+  const [img,setImg] = useState(false)
+  return (
+    <div className={`${s.block} ${buy ? 'bought' : 'not-bought'}`}>
       {
-        !buy &&(
+        !buy && (
           <div className={s.hover} >
             <img src={plus} className={s.img__plus} alt="Купить блок" onClick={() => {
-              setModal(true)
+              setModal({...modal,block:true})
             }} />
           </div>
         )
       }
       {
-        buy &&(
+        buy && (
           <div className={s.block__content}>
+            <div className={s.panel}>
+              <div className={s.panel__option}>
+                <Button variant='contained' onClick={() => {
+                  setState(!state)
+                }}>Добавить</Button>
+                {state ? <div className={s.panel__menu}>
+                  <div className={s.panel__menu__option}>
+                    <div className={s.panel__menu__option}><p onClick={() => {
+                      let newElement = { element: "h1", data: "Заголовок" };
+                      setMas({ ...mas, elements: [...mas.elements, newElement] });
+                    }}>Заголовок</p>
+                    </div>
+                  </div>
+                  <div className={s.panel__menu__option}><p onClick={() => {
+                    let newElement = { element: "p", data: "Параграф" };
+                    setMas({ ...mas, elements: [...mas.elements, newElement] });
+                  }}>Параграф</p></div>
+                  <div className={s.panel__menu__option}>
+                    <p onClick={()=>{
+                      setImg(true)
+                    }}>Фотография</p></div>
+                </div> : null}
+                {img?<ImgModal setImg = {setImg}/>:null}
+              </div>
+            </div>
             {
-              data.elements.map((item)=>{
-              let data = makeElement(item.element,item.data)
-                return <div {...item.attributes} dangerouslySetInnerHTML={{__html:data}}/>
+              mas.elements.map((item) => {
+                let testData = makeElement(item.element, item.data)
+                return <div {...item.attributes} dangerouslySetInnerHTML={{ __html: testData }} />
               })
             }
           </div>
@@ -55,8 +82,8 @@ const Block = ({buy,data,SectionData}) => {
 
       </div>
       {
-        modal&&(
-          <BlockModal data = {SectionData} setModal={setModal} />
+        modal.block && (
+          <BlockModal data={SectionData} setModal={setModal} />
         )
       }
     </div>

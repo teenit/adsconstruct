@@ -5,7 +5,6 @@ import eng from '../../img/eng_lang.svg'
 import ua from '../../img/ua_lang.svg'
 
 const Lang = () => {
-    const [lang, setLang] = useState(false)
 
     return (
         <div className={s.lang}>
