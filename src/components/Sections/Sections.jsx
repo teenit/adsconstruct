@@ -11,7 +11,7 @@ const Sections = ({ data }) => {
     <div className={s.module}>
       <div className={`${s.container} ${s["section" + data.type]}`}>
         {Array.from({ length: data.type }, (item, index) => (
-          <Block key={index} data={data.blocks[index]} buy={filteredMas.some((item) => item.position === index)}
+          <Block key={index} SectionData = {data} data={data.blocks[index]} buy={filteredMas.some((item) => item.position === index)}
           />
         ))}
       </div>
