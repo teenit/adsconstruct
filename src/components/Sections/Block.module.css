@@ -134,3 +134,71 @@
     display: flex;
     gap: 10px;
 }
+.panel__option{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.panel{
+    width: max-content;
+    height: max-content;
+    display: flex;
+    gap: 15px;
+    border-radius: 5px;
+    margin: auto;
+}
+.panel__menu{
+    width: max-content;
+    height: max-content;
+    background-color: var(--main-color);
+    color: #fff;
+    border-radius: 7.5px;
+    padding: 10px;
+    position: absolute;
+    margin-top: 45px;
+    z-index: 997;
+}
+.panel__menu__option > p{
+    cursor: pointer;
+    margin: 0;
+}
+.modal__inner{
+    width: max-content;
+    height: max-content;
+    border-radius: 7.5px;
+    background: #fff;
+    padding: 10px;
+}
+.photo__wrap{
+    width: 350px;
+    height: 200px;
+    box-sizing: border-box;
+    border: dashed 3px var(--light-gray-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-gray-color) ;
+}
+.photo__inner, .file__button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.photo__inner p{
+    margin: 0;
+}
+.buttons__wrap{
+    display: flex;
+    gap: 7.5px;
+}
+
+.file__button > input[type="file"] {
+    position: relative;
+    bottom: 45px;
+    max-width: 25px;
+    opacity: 0;
+}
+
+  
