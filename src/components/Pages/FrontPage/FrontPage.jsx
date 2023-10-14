@@ -118,7 +118,7 @@ const FrontPage = () => {
                 },
                 {
                     element:"p",
-                    data:"uhefbwe fw efiwe fiwe <h2>BIG TEXT</h2> nekjfw fwefj wehjf hew",
+                    data:"uhefbwe fw efiwe fiwe <h2>BIG <i>TEXT</i></h2> nekjfw fwefj wehjf hew",
                     id:"",
                     idBlock:"",
                     position:0,
