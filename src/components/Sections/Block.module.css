@@ -148,6 +148,7 @@
     width: max-content;
     height: max-content;
     display: flex;
+    align-items: center;
     gap: 15px;
     border-radius: 5px;
     margin: auto;
@@ -220,10 +221,6 @@
     padding: 10px;
     border-radius: 10px;
     height: max-content;
-    position: absolute;
-    top: -44px;
-    right: 0;
-    z-index: 999999;
 }
 .element__wrap{
     display: flex;
@@ -270,6 +267,6 @@
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: red;
+    background: var(--main-color);
     border-radius: 10px;
   }

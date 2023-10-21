@@ -29,7 +29,7 @@ const Block = ({ buy, data, SectionData }) => {
     add: false,
     edit: false,
     img: false,
-    block:false
+    block: false
   })
   const [mas, setMas] = useState({ ...data })
   function deleteElem(index) {
@@ -38,7 +38,6 @@ const Block = ({ buy, data, SectionData }) => {
     setMas(newMas);
   }
 
-  const [editMenu, setEditMenu] = useState(false)
   const [edit, setEdit] = useState(false)
   const [elemIndex, setElemIndex] = useState(null)
 
@@ -67,12 +66,14 @@ const Block = ({ buy, data, SectionData }) => {
                     <div className={s.panel__menu__option}><p onClick={() => {
                       let newElement = { element: "h1", data: "Заголовок" };
                       setMas({ ...mas, elements: [...mas.elements, newElement] });
+                      setState({ ...state, add: !state.add })
                     }}>Заголовок</p>
                     </div>
                   </div>
                   <div className={s.panel__menu__option}><p onClick={() => {
                     let newElement = { element: "p", data: "Параграф" };
                     setMas({ ...mas, elements: [...mas.elements, newElement] });
+                    setState({ ...state, add: !state.add })
                   }}>Параграф</p></div>
                   <div className={s.panel__menu__option}>
                     <p onClick={() => {
@@ -87,31 +88,26 @@ const Block = ({ buy, data, SectionData }) => {
               mas.elements.map((item, index) => {
                 let testData = makeElement(item.element, item.data)
                 return <div className={s.element__wrap}>
-                  <div contentEditable={edit && elemIndex == index} className={`${s.element} ${(editMenu || edit) && elemIndex !== index ? s.selected : ''}`} {...item.attributes} dangerouslySetInnerHTML={{ __html: testData }} onClick={() => {
-                    if(edit){
-                      setEditMenu(false)
-                    }else{
-                      setEditMenu(true)
-                    }
+                  <div contentEditable={edit && elemIndex == index} className={`${s.element} ${elemIndex !== index && elemIndex!==null ? s.selected : ''}`} {...item.attributes} dangerouslySetInnerHTML={{ __html: testData }} onClick={() => {
                     setElemIndex(index)
+                    setEdit(true)
                   }} />
-                  
-                  {edit && elemIndex == index ? <TextEditor setEdit={setEdit} /> : null}
+
+                  {edit && elemIndex == index ? <TextEditor deleteElem={deleteElem} elemIndex={elemIndex} setEdit={setEdit} /> : null}
 
                 </div>
               })
             }
- 
+
           </div>
 
         )
       }
-      <div className={s.content__block}>
 
-      </div>
+
       {
         state.block && (
-          <BlockModal data={SectionData} close={()=>{setState({...state,block:false})}} />
+          <BlockModal data={SectionData} close={() => { setState({ ...state, block: false }) }} />
         )
       }
     </div>

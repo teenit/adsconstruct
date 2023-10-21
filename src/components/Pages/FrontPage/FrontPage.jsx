@@ -105,28 +105,7 @@ const FrontPage = () => {
                 }, 
                 position: 0,
                 idSection: "",
-                elements: [{
-                    element:"h1",
-                    data:"uhefbwe fw efiwe fiwe",
-                    id:"",
-                    idBlock:"",
-                    position:0,
-                    attributes:{
-                        style:{color:"red"},
-                        width:"100%"
-                    }
-                },
-                {
-                    element:"p",
-                    data:"uhefbwe fw efiwe fiwe <h2>BIG <i>TEXT</i></h2> nekjfw fwefj wehjf hew",
-                    id:"",
-                    idBlock:"",
-                    position:0,
-                    attributes:{
-                        style:{color:"green",fontSize:"10px"},
-                        width:"100%"
-                    }
-                }]
+                elements: []
             }, {
                 userName: "",
                 userNickname: "",
@@ -147,20 +126,7 @@ const FrontPage = () => {
         <div className={s.wrap}>
             <Sections data={mas[2]} />
            
-            {mas[0].blocks[0].elements.map((item, index) => {
-                const styles = Object.keys(item.attributes.style).map(key => `${key}:${item.attributes[key]}`)
-                const attributes = Object.keys(item.attributes).map(key => `${key}=${item.attributes[key]}`)
-
-                return (
-                    `<${item.tag} ${attributes}">${item.data.map((dataItem) => {
-                        if (dataItem.isTag) {
-                            return `<${dataItem.tag}>${dataItem.data}</${dataItem.tag}>`
-                        } else {
-                            return dataItem.data
-                        }
-                    }).join('')}</${item.tag}>`
-                );
-            })}
+            
 
         </div>
 

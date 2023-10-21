@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import s from './police.module.css'
-import { FormatAlignCenter, FormatAlignLeft, FormatAlignRight, FormatBold, FormatItalic, FormatUnderlined, FormatColorFill, FormatSize, Close } from "@mui/icons-material";
+import { FormatAlignCenter, FormatAlignLeft, FormatAlignRight, FormatBold, FormatItalic, FormatUnderlined, FormatColorFill, FormatSize, Close, Delete } from "@mui/icons-material";
 import PortalModalRootWS from "../../Portals/PortalModalRootWS";
 
-const TextEditor = ({setEdit}) => {
+const TextEditor = ({setEdit,deleteElem,elemIndex}) => {
     const [selectionStyles, setSelectionStyles] = useState({
         bold: false,
         italic: false,
@@ -66,6 +66,10 @@ const TextEditor = ({setEdit}) => {
                     <FormatSize className={`${s.edit} ${checkStyle("fontsize")}`} style={{ fontSize: 20 }} onClick={() => {
                         setTextEdit(!textedit)
                     }} />
+                 <Delete className={`${s.edit} ${checkStyle("fontsize")}`} style={{ fontSize: 20 }} onClick={() => {
+                  deleteElem(elemIndex)
+                  setEdit(false)
+                }} />
                 <Close className={`${s.edit} ${checkStyle("fontsize")}`} style={{ fontSize: 20 }} onClick={()=>{
                     setEdit(false)
                 }}/>
