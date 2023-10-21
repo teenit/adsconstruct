@@ -1,7 +1,10 @@
 .block{
     width: 100%;
+    max-width: 100%;
     height: 100%;
     background: #fff;
+   overflow: auto;
+   overflow-wrap: break-word;
 }
 .hover{
     width: 100%;
@@ -217,15 +220,20 @@
     padding: 10px;
     border-radius: 10px;
     height: max-content;
+    position: absolute;
+    top: -44px;
+    right: 0;
+    z-index: 999999;
 }
 .element__wrap{
     display: flex;
     align-items: center;
     gap: 7.5px;
+    position: relative;
 }
 .element{
     margin: 0;
-    width: max-content;
+    width: 100%;
     cursor: pointer;
     transition: all .3s;
     outline: none;
@@ -245,4 +253,23 @@
     background-color: initial; 
     color: initial;
   }
+
+
+
+/* width */
+::-webkit-scrollbar {
+    width: auto;
+    height: 3px;
+  }
   
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 10px;
+  }

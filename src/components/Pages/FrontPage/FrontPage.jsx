@@ -95,7 +95,7 @@ const FrontPage = () => {
             type: 4,
             position: 8,
             blocks: [{
-                userName: "",
+                userName: "",   
                 userNickname: "",
                 id: "",
                 buyTime: "12.09.2023 13:44",

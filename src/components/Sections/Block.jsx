@@ -95,25 +95,13 @@ const Block = ({ buy, data, SectionData }) => {
                     }
                     setElemIndex(index)
                   }} />
-                  {editMenu && elemIndex == index ? <div className={s.edit__menu}>
-                    <ModeEdit className={s.edit__icon}  onClick={() => {
-                      setEdit(!edit)
-                      setEditMenu(false)
-                    }} />
-                    <Delete className={s.edit__icon}  onClick={() => {
-                      deleteElem(elemIndex)
-                      setEditMenu(false)
-                    }} />
-                    <Close className={s.edit__icon}  onClick={() => {
-                      setEditMenu(false)
-                    }} />
-                  </div> : null}
+                  
                   {edit && elemIndex == index ? <TextEditor setEdit={setEdit} /> : null}
 
                 </div>
               })
             }
-
+ 
           </div>
 
         )
