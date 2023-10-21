@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PortalModalRoot from '../Portals/PortalModalRoot'
 import s from './Block.module.css'
 import { Button } from '@mui/material'
 import add from '../../img/add.png'
-const ImgModal = ({ setImg }) => {
+const ImgModal = ({ close }) => {
     return (
         <PortalModalRoot>
             <div className={s.modal__inner}>
@@ -18,12 +18,8 @@ const ImgModal = ({ setImg }) => {
                     </div>
                 </div>
                 <div className={s.buttons__wrap}>
-                    <Button variant='contained' onClick={() => {
-                        setImg(false)
-                    }}>закрыть</Button>
-                    <Button variant='contained' onClick={() => {
-                        setImg(false)
-                    }}>сохранить</Button>
+                    <Button variant='contained' onClick={close}>закрыть</Button>
+                    <Button variant='contained' onClick={close}>сохранить</Button>
                 </div>
             </div>
         </PortalModalRoot>

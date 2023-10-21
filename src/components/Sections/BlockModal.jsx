@@ -5,7 +5,7 @@ import { Button } from '@mui/material'
 import ConfirmModal from './ConfirmModal'
 import { useSelector } from 'react-redux'
 
-const BlockModal = ({ setModal,data}) => {
+const BlockModal = ({ close,data}) => {
     const [active, setActive] = useState(null);
     const [confirmModal, setConfirmModal] = useState(false);
     const { blocks } = useSelector(state => state.sections)
@@ -36,10 +36,8 @@ const BlockModal = ({ setModal,data}) => {
                 <Button variant='contained' onClick={() => {
                     setConfirmModal(true)
                 }}>выбрать блок</Button>
-                {confirmModal ? <ConfirmModal setBlockModal={() => { setModal(false) }} setModal={() => { setConfirmModal(false) }} activeIndex={active}  /> : null}
-                <Button variant='contained' className={s.red__button} onClick={() => {
-                    setModal(false)
-                }}>отмена</Button>
+                {confirmModal ? <ConfirmModal setBlockModal={close} setModal={() => { setConfirmModal(false) }} activeIndex={active}  /> : null}
+                <Button variant='contained' className={s.red__button} onClick={close}>отмена</Button>
             </div>
         </PortalModalRoot>
     )

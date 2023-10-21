@@ -138,6 +138,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 5px;
 }
 
 .panel{
@@ -180,11 +181,16 @@
     justify-content: center;
     color: var(--light-gray-color) ;
 }
-.photo__inner, .file__button{
+.photo__inner{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
+}
+.file__button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .photo__inner p{
     margin: 0;
@@ -194,11 +200,49 @@
     gap: 7.5px;
 }
 
-.file__button > input[type="file"] {
-    position: relative;
-    bottom: 45px;
-    max-width: 25px;
-    opacity: 0;
-}
 
+.file__button > input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+.edit__menu{
+    display: flex;
+    gap: 7.5px;
+    background: #353935;
+    padding: 10px;
+    border-radius: 10px;
+    height: max-content;
+}
+.element__wrap{
+    display: flex;
+    align-items: center;
+    gap: 7.5px;
+}
+.element{
+    margin: 0;
+    width: max-content;
+    cursor: pointer;
+    transition: all .3s;
+    outline: none;
+}
+.selected{
+    opacity: 0.3;
+}
+.edit__icon{
+    color: #fff;
+    cursor: pointer;
+}
+.edit__icon:hover{
+    transition: all .3s;
+    transform: scale(1.2);
+}
+.element::selection {
+    background-color: initial; 
+    color: initial;
+  }
   

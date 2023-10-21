@@ -1,9 +1,11 @@
-import React, { createElement, useEffect, useState, ReactDOM, Children } from 'react'
+import React, { createElement, useEffect, useState } from 'react'
 import s from './Block.module.css'
 import plus from '../../img/add.png'
 import BlockModal from './BlockModal'
 import { Button } from '@mui/material'
 import ImgModal from './ImgModal'
+import TextEditor from '../Pages/Police/TextEditor'
+import { Close, Delete, ModeEdit } from '@mui/icons-material'
 
 const makeElement = (element, data) => {
   let a = `<div>${data}</div>`;
@@ -18,25 +20,35 @@ const makeElement = (element, data) => {
       a = `<div>${data}</div>`
       break;
   }
-
   return a;
 }
 
 
 const Block = ({ buy, data, SectionData }) => {
-  const [state, setState] = useState(false)
-  const [mas, setMas] = useState({ ...data })
-  const [modal, setModal] = useState({
-    block:false,
+  const [state, setState] = useState({
+    add: false,
+    edit: false,
+    img: false,
+    block:false
   })
-  const [img,setImg] = useState(false)
+  const [mas, setMas] = useState({ ...data })
+  function deleteElem(index) {
+    const newMas = { ...mas };
+    delete newMas.elements[index];
+    setMas(newMas);
+  }
+
+  const [editMenu, setEditMenu] = useState(false)
+  const [edit, setEdit] = useState(false)
+  const [elemIndex, setElemIndex] = useState(null)
+
   return (
     <div className={`${s.block} ${buy ? 'bought' : 'not-bought'}`}>
       {
         !buy && (
           <div className={s.hover} >
             <img src={plus} className={s.img__plus} alt="Купить блок" onClick={() => {
-              setModal({...modal,block:true})
+              setState({ ...state, block: true })
             }} />
           </div>
         )
@@ -47,9 +59,10 @@ const Block = ({ buy, data, SectionData }) => {
             <div className={s.panel}>
               <div className={s.panel__option}>
                 <Button variant='contained' onClick={() => {
-                  setState(!state)
+                  setState({ ...state, add: !state.add })
                 }}>Добавить</Button>
-                {state ? <div className={s.panel__menu}>
+
+                {state.add ? <div className={s.panel__menu}>
                   <div className={s.panel__menu__option}>
                     <div className={s.panel__menu__option}><p onClick={() => {
                       let newElement = { element: "h1", data: "Заголовок" };
@@ -62,28 +75,55 @@ const Block = ({ buy, data, SectionData }) => {
                     setMas({ ...mas, elements: [...mas.elements, newElement] });
                   }}>Параграф</p></div>
                   <div className={s.panel__menu__option}>
-                    <p onClick={()=>{
-                      setImg(true)
+                    <p onClick={() => {
+                      setState({ ...state, img: !state.img })
                     }}>Фотография</p></div>
                 </div> : null}
-                {img?<ImgModal setImg = {setImg}/>:null}
+                {state.img ? <ImgModal close={() => { setState({ ...state, img: !state.img }) }} /> : null}
               </div>
             </div>
+
             {
-              mas.elements.map((item) => {
+              mas.elements.map((item, index) => {
                 let testData = makeElement(item.element, item.data)
-                return <div {...item.attributes} dangerouslySetInnerHTML={{ __html: testData }} />
+                return <div className={s.element__wrap}>
+                  <div contentEditable={edit && elemIndex == index} className={`${s.element} ${(editMenu || edit) && elemIndex !== index ? s.selected : ''}`} {...item.attributes} dangerouslySetInnerHTML={{ __html: testData }} onClick={() => {
+                    if(edit){
+                      setEditMenu(false)
+                    }else{
+                      setEditMenu(true)
+                    }
+                    setElemIndex(index)
+                  }} />
+                  {editMenu && elemIndex == index ? <div className={s.edit__menu}>
+                    <ModeEdit className={s.edit__icon}  onClick={() => {
+                      setEdit(!edit)
+                      setEditMenu(false)
+                    }} />
+                    <Delete className={s.edit__icon}  onClick={() => {
+                      deleteElem(elemIndex)
+                      setEditMenu(false)
+                    }} />
+                    <Close className={s.edit__icon}  onClick={() => {
+                      setEditMenu(false)
+                    }} />
+                  </div> : null}
+                  {edit && elemIndex == index ? <TextEditor setEdit={setEdit} /> : null}
+
+                </div>
               })
             }
+
           </div>
+
         )
       }
       <div className={s.content__block}>
 
       </div>
       {
-        modal.block && (
-          <BlockModal data={SectionData} setModal={setModal} />
+        state.block && (
+          <BlockModal data={SectionData} close={()=>{setState({...state,block:false})}} />
         )
       }
     </div>
