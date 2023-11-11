@@ -4,13 +4,10 @@ import s from './Modals.module.css';
 import PortalModalRoot from '../Portals/PortalModalRoot';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@mui/material'
-import { setAccount, setSections, setSettings, setSlots, setStats } from '../../store/Slices/profileModalSlice';
 
 
 const ProfileModal = ({ setModal }) => {
-  const { dispatchStats, dispatchAccount, dispatchSections, dispatchSlots, dispatchSettings } = useSelector(state => state.profileModal)
   const {log} = useSelector(state => state.log);
-  const dispatch = useDispatch()
  const [activeOption, setActiveOption] = useState({
     stats: false,
     account: false,
@@ -33,7 +30,6 @@ const ProfileModal = ({ setModal }) => {
                         setActiveOption({ ...activeOption, stats: false })
                       }}> <Link to="/profile" onClick={()=>{
                         setModal(false)
-                        dispatch(setStats(true))
                       }} >Статистика</Link>              
                       </p>
                     </div>
@@ -43,7 +39,7 @@ const ProfileModal = ({ setModal }) => {
                       }} onMouseLeave={() => {
                         setActiveOption({ ...activeOption, account: false })
                       }}>
-                        <NavLink to={"/profile#account"}onClick={()=>{
+                        <NavLink to="/profile"onClick={()=>{
                         setModal(false)
                       }} >Аккаунт</NavLink>  
                       </p>
@@ -56,7 +52,6 @@ const ProfileModal = ({ setModal }) => {
                       }}>
                         <Link to="/profile" onClick={()=>{
                         setModal(false)
-                        dispatch(setSections(true))
                       }} >Секции</Link>  
                       </p>
                     </div>
@@ -68,7 +63,6 @@ const ProfileModal = ({ setModal }) => {
                       }}>
                         <Link to="/profile" onClick={()=>{
                         setModal(false)
-                        dispatch(setSlots(true))
                       }} >Слоты</Link>  
                       </p>
                     </div>
@@ -80,7 +74,6 @@ const ProfileModal = ({ setModal }) => {
                       }}>
                         <Link to="/profile" onClick={()=>{
                         setModal(false)
-                        dispatch(setSettings(true))
                       }} >Настройки</Link>  
                       </p>
                     </div>

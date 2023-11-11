@@ -3,19 +3,26 @@ import PortalModalRoot from '../Portals/PortalModalRoot'
 import s from './Block.module.css'
 import { Button } from '@mui/material'
 import add from '../../img/add.png'
-const ImgModal = ({ close }) => {
+const ImgModal = ({ close,previewUrl,handleFileChange }) => {
+
+
     return (
+
         <PortalModalRoot>
             <div className={s.modal__inner}>
                 <div className={s.photo__wrap}>
-                    <div className={s.photo__inner}>
+                    {previewUrl ? (
+                        <img src={previewUrl} alt="Preview" />
+                    ) : (<div className={s.photo__inner} >
                         <p>some text</p>
                         <div className={s.file__button}>
-                        <img src={add} alt=""></img>
-                        <input type="file" name="" id="" />
+                            <img src={add} alt="" />
+                            <input type="file" name="" id="" onChange={handleFileChange} />
                         </div>
-
                     </div>
+                    )}
+
+
                 </div>
                 <div className={s.buttons__wrap}>
                     <Button variant='contained' onClick={close}>закрыть</Button>

@@ -5,7 +5,6 @@ import { Alert, Button, TextField } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { minusBalans } from '../../store/Slices/balansSlice';
-import { removeSection, setBlocks, setCode, setCount, setSection } from '../../store/Slices/sectionSlice';
 import copy from '../../img/copy.png';
 
 const ConfirmModal = ({ setModal, itemSection, setSectionModal }) => {
@@ -49,9 +48,6 @@ const ConfirmModal = ({ setModal, itemSection, setSectionModal }) => {
                         <Button variant='contained' onClick={() => {
                             if (tvmpCoin >= itemSection.price) {
                                 dispatch(minusBalans(itemSection.price))
-                                dispatch(setSection(sectionData.type))
-                                dispatch(setBlocks(sectionData.blocks))
-                                dispatch(setCount(1))
                                 setBuy(true)
                             } else {
                                 document.getElementById("balance").style.color = "red"

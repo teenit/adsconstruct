@@ -5,9 +5,8 @@ import BlockModal from './BlockModal'
 import { Button } from '@mui/material'
 import ImgModal from './ImgModal'
 import TextEditor from '../Pages/Police/TextEditor'
-import { Close, Delete, ModeEdit } from '@mui/icons-material'
 
-const makeElement = (element, data) => {
+const makeElement = (element, data,attributes) => {
   let a = `<div>${data}</div>`;
   switch (element) {
     case "h1":
@@ -16,15 +15,20 @@ const makeElement = (element, data) => {
     case "p":
       a = `<p>${data}</p>`
       break;
+    case "img":
+      a = `<img src=${attributes}></img>`
+      break;
     default:
-      a = `<div>${data}</div>`
+      a = `<p>${data}</p>`
       break;
   }
   return a;
 }
 
+const Block = ({ buy, data, SectionData,blockIndex }) => {
 
-const Block = ({ buy, data, SectionData }) => {
+  const [active, setActive] = useState(blockIndex);
+  const [selectedFile, setSelectedFile] = useState(null);
   const [state, setState] = useState({
     add: false,
     edit: false,
@@ -40,7 +44,16 @@ const Block = ({ buy, data, SectionData }) => {
 
   const [edit, setEdit] = useState(false)
   const [elemIndex, setElemIndex] = useState(null)
-
+  const [previewUrl, setPreviewUrl] = useState(null);
+  const handleFileChange = (e) => {
+      const file = e.target.files[0]
+      if (file) {
+          const url = URL.createObjectURL(file)
+          setSelectedFile(url);
+          setPreviewUrl(url);
+      }
+  };
+  console.log(mas);
   return (
     <div className={`${s.block} ${buy ? 'bought' : 'not-bought'}`}>
       {
@@ -76,11 +89,9 @@ const Block = ({ buy, data, SectionData }) => {
                     setState({ ...state, add: !state.add })
                   }}>Параграф</p></div>
                   <div className={s.panel__menu__option}>
-                    <p onClick={() => {
-                      setState({ ...state, img: !state.img })
-                    }}>Фотография</p></div>
+                    <p onClick={()=>{setState({...state,img:true})}}>Фотография</p></div>
                 </div> : null}
-                {state.img ? <ImgModal close={() => { setState({ ...state, img: !state.img }) }} /> : null}
+                {/* {state.img ? <ImgModal handleFileChange={handleFileChange} previewUrl={previewUrl} close={() => { setState({ ...state, img: !state.img, add:false }); }} /> : null} */}
               </div>
             </div>
 
@@ -88,12 +99,16 @@ const Block = ({ buy, data, SectionData }) => {
               mas.elements.map((item, index) => {
                 let testData = makeElement(item.element, item.data)
                 return <div className={s.element__wrap}>
-                  <div contentEditable={edit && elemIndex == index} className={`${s.element} ${elemIndex !== index && elemIndex!==null ? s.selected : ''}`} {...item.attributes} dangerouslySetInnerHTML={{ __html: testData }} onClick={() => {
-                    setElemIndex(index)
+                  <div contentEditable={edit && elemIndex == index} className={`${s.element} ${elemIndex !== index && elemIndex !== null ? s.selected : ''}`} {...item.attributes} dangerouslySetInnerHTML={{ __html: testData }} onClick={() => {
+                    if (elemIndex == index) {
+                      setElemIndex(null)
+                    } else {
+                      setElemIndex(index)
+                    }
                     setEdit(true)
                   }} />
 
-                  {edit && elemIndex == index ? <TextEditor deleteElem={deleteElem} elemIndex={elemIndex} setEdit={setEdit} /> : null}
+                  {edit && elemIndex == index ? <TextEditor setElemIndex={setElemIndex} deleteElem={deleteElem} elemIndex={elemIndex} setEdit={setEdit} /> : null}
 
                 </div>
               })
@@ -107,7 +122,7 @@ const Block = ({ buy, data, SectionData }) => {
 
       {
         state.block && (
-          <BlockModal data={SectionData} close={() => { setState({ ...state, block: false }) }} />
+          <BlockModal buy={buy} setActive={setActive} active={active} data={SectionData} close={() => { setState({ ...state, block: false }) }} />
         )
       }
     </div>

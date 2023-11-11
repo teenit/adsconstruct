@@ -5,11 +5,8 @@ import { Button } from '@mui/material'
 import ConfirmModal from './ConfirmModal'
 import { useSelector } from 'react-redux'
 
-const BlockModal = ({ close,data}) => {
-    const [active, setActive] = useState(null);
+const BlockModal = ({ close,data,active,setActive,buy }) => {
     const [confirmModal, setConfirmModal] = useState(false);
-    const { blocks } = useSelector(state => state.sections)
-
 
     return (
         <PortalModalRoot>
@@ -27,7 +24,7 @@ const BlockModal = ({ close,data}) => {
                     ${data.type === 8 ? s.eighth : null}
                 `}>
                     {Array.from({length:data.type}).map((item, index) => (
-                        <div key={index} className={`${s.mini__block} ${active === index ? s.active : null}`} onClick={() => {
+                        <div key={index} className={`${!buy?s.mini__block:s.active} ${active === index ? s.active : null}`} onClick={() => {
                             setActive(index)
                         }}
                         ></div>
@@ -36,7 +33,7 @@ const BlockModal = ({ close,data}) => {
                 <Button variant='contained' onClick={() => {
                     setConfirmModal(true)
                 }}>выбрать блок</Button>
-                {confirmModal ? <ConfirmModal setBlockModal={close} setModal={() => { setConfirmModal(false) }} activeIndex={active}  /> : null}
+                {confirmModal ? <ConfirmModal setBlockModal={close} setModal={() => { setConfirmModal(false) }} activeIndex={active} data={data}  /> : null}
                 <Button variant='contained' className={s.red__button} onClick={close}>отмена</Button>
             </div>
         </PortalModalRoot>

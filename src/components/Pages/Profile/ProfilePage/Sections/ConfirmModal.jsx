@@ -3,7 +3,6 @@ import PortalModalRoot from '../../../../Portals/PortalModalRoot'
 import s from './Sections.module.css'
 import { Button } from '@mui/material'
 import { useDispatch } from 'react-redux'
-import { removeSection, setCount } from '../../../../../store/Slices/sectionSlice'
 import { addBalans } from '../../../../../store/Slices/balansSlice'
 
 
@@ -18,9 +17,7 @@ const ConfirmModal = ({setModal,setConfirmModal,dataItem}) => {
                 <Button className={s.red__button} variant='contained' onClick={() => {
                     setModal(false)
                     setConfirmModal(false)
-                    dispatch(setCount(-1))
                     dispatch(addBalans(returnPrice))
-                    dispatch(removeSection(dataItem))
                 }}>Продать секцию</Button>
                 <Button className={s.red__button} variant='contained' onClick={() => {
                     setConfirmModal(false)

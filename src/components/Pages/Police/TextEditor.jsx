@@ -3,7 +3,7 @@ import s from './police.module.css'
 import { FormatAlignCenter, FormatAlignLeft, FormatAlignRight, FormatBold, FormatItalic, FormatUnderlined, FormatColorFill, FormatSize, Close, Delete } from "@mui/icons-material";
 import PortalModalRootWS from "../../Portals/PortalModalRootWS";
 
-const TextEditor = ({setEdit,deleteElem,elemIndex}) => {
+const TextEditor = ({setElemIndex,setEdit,deleteElem,elemIndex}) => {
     const [selectionStyles, setSelectionStyles] = useState({
         bold: false,
         italic: false,
@@ -72,6 +72,7 @@ const TextEditor = ({setEdit,deleteElem,elemIndex}) => {
                 }} />
                 <Close className={`${s.edit} ${checkStyle("fontsize")}`} style={{ fontSize: 20 }} onClick={()=>{
                     setEdit(false)
+                    setElemIndex(null)
                 }}/>
                 {
                 !textedit ? null :
